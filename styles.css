@@ -1553,3 +1553,115 @@ html, body {
     font-size: .94rem !important;
   }
 }
+
+/* === HERO SCALE + POSITION PASS 2026-09-06 === */
+/* Desktop remains untouched. Tablet and mobile use a larger, higher content stack. */
+@media (min-width: 621px) and (max-width: 1100px) {
+  .hero-content {
+    justify-content: flex-start !important;
+    padding-top: clamp(240px, 34vh, 380px) !important;
+    padding-bottom: 64px !important;
+    transform: none !important;
+  }
+
+  .hero-title {
+    width: 100% !important;
+    max-width: 960px !important;
+    margin: 0 auto 28px !important;
+    font-size: clamp(4.8rem, 10.6vw, 6.6rem) !important;
+    line-height: .9 !important;
+    letter-spacing: -.058em !important;
+  }
+
+  .hero-orange {
+    font-size: .9em !important;
+  }
+
+  .hero-bottom {
+    width: min(100%, 790px) !important;
+    max-width: 790px !important;
+    margin-inline: auto !important;
+    padding-top: 24px !important;
+    gap: 22px !important;
+  }
+
+  .hero-bottom p {
+    max-width: 690px !important;
+    font-size: 1.12rem !important;
+    line-height: 1.52 !important;
+  }
+
+  .hero-actions {
+    margin-top: 2px !important;
+  }
+
+  .hero-foot {
+    margin-top: 16px !important;
+    font-size: 8.8px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-content.container {
+    justify-content: flex-start !important;
+    padding-top: clamp(230px, 36vh, 330px) !important;
+    padding-bottom: 82px !important;
+    transform: none !important;
+  }
+
+  .hero-title {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto 20px !important;
+    font-size: clamp(2.9rem, 12.8vw, 3.8rem) !important;
+    line-height: .9 !important;
+    letter-spacing: -.058em !important;
+  }
+
+  .hero-orange {
+    font-size: .9em !important;
+  }
+
+  .hero-bottom {
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+    margin-inline: auto !important;
+    padding-top: 18px !important;
+    gap: 15px !important;
+  }
+
+  .hero-bottom p {
+    max-width: 390px !important;
+    font-size: 1.02rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-actions {
+    width: min(100%, 390px) !important;
+    gap: 10px !important;
+  }
+
+  .button {
+    min-height: 48px !important;
+    font-size: 9.5px !important;
+  }
+
+  .hero-foot {
+    margin-top: 12px !important;
+    font-size: 7.6px !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-content.container {
+    padding-top: clamp(215px, 34vh, 285px) !important;
+  }
+
+  .hero-title {
+    font-size: clamp(2.55rem, 12vw, 3.1rem) !important;
+  }
+
+  .hero-bottom p {
+    font-size: .96rem !important;
+  }
+}
