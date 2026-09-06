@@ -1281,3 +1281,275 @@ html, body {
     font-size: 8.5px;
   }
 }
+
+/* === MOBILE + TABLET COMPOSITION PASS 2026-09-06 === */
+
+/* The ticker is decorative. Keeping it out of the touch hit-testing path makes vertical scrolling smoother. */
+.capability-ticker,
+.capability-track {
+  touch-action: pan-y;
+}
+.capability-track {
+  pointer-events: none;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Tablet: treat the hero as a portrait composition rather than a cropped desktop banner. */
+@media (min-width: 621px) and (max-width: 1100px) {
+  .hero-media {
+    background-image: url("assets/hero-cape-town-tablet.jpg");
+    background-position: center center !important;
+    background-size: cover;
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.14) 30%, rgba(5,5,5,.34) 54%, rgba(5,5,5,.72) 100%),
+      linear-gradient(90deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.08) 52%, rgba(5,5,5,.08) 100%);
+  }
+
+  .hero-content {
+    justify-content: center !important;
+    padding-top: calc(var(--header-h) + 92px) !important;
+    padding-bottom: 46px !important;
+    transform: translateY(6vh);
+  }
+
+  .hero-title {
+    max-width: 900px !important;
+    font-size: clamp(3.8rem, 8.5vw, 5.6rem) !important;
+    line-height: .91 !important;
+    margin-bottom: 30px !important;
+  }
+
+  .hero-orange {
+    font-size: .92em !important;
+  }
+
+  .hero-bottom {
+    width: min(100%, 760px) !important;
+    gap: 24px !important;
+    padding-top: 26px !important;
+  }
+
+  .hero-bottom p {
+    max-width: 650px !important;
+    font-size: 1.06rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .hero-actions {
+    gap: 14px !important;
+  }
+
+  .hero-foot {
+    margin-top: 18px !important;
+    gap: 20px !important;
+    font-size: 8.5px !important;
+  }
+
+  /* iPad and small laptops get genuine tablet layouts rather than squeezed desktop grids. */
+  .services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .service,
+  .service:nth-child(3n+2),
+  .service:nth-child(3n+3),
+  .service:nth-child(odd),
+  .service:nth-child(even) {
+    padding: 34px 30px 40px !important;
+    border-right: 1px solid var(--line) !important;
+  }
+  .service:nth-child(even) {
+    border-right: 0 !important;
+  }
+  .service h3 {
+    font-size: 1.35rem !important;
+  }
+  .service p {
+    font-size: .98rem !important;
+    line-height: 1.65 !important;
+  }
+
+  .process-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .process-step,
+  .process-step + .process-step,
+  .process-step:nth-child(3) {
+    min-height: 220px !important;
+    padding: 32px 30px 34px !important;
+    border-top: 1px solid var(--line) !important;
+    border-right: 1px solid var(--line) !important;
+  }
+  .process-step:nth-child(even) {
+    border-right: 0 !important;
+  }
+  .process-step > span {
+    margin-bottom: 34px !important;
+  }
+  .process-step p {
+    max-width: 310px !important;
+    font-size: .96rem !important;
+  }
+
+  /* Keep headings centred, but long prose reads more naturally left aligned. */
+  .intro-grid,
+  .about-copy,
+  .coverage-copy,
+  .contact-copy {
+    text-align: center;
+  }
+  .intro-copy,
+  .about-copy p,
+  .coverage-copy > p,
+  .contact-copy > p {
+    text-align: left;
+  }
+  .intro-copy {
+    max-width: 680px;
+    margin-inline: auto;
+  }
+  .about-copy p,
+  .coverage-copy > p,
+  .contact-copy > p {
+    max-width: 650px;
+  }
+
+  .capability-item strong {
+    font-size: .98rem !important;
+  }
+  .capability-icon {
+    width: 30px !important;
+    height: 30px !important;
+  }
+}
+
+/* Mobile: deliberately compose the hero around the message, not around empty sky. */
+@media (max-width: 620px) {
+  .hero-media {
+    background-image: url("assets/hero-cape-town-mobile.jpg");
+    background-position: center center !important;
+    background-size: cover;
+  }
+
+  .hero-shade {
+    background:
+      linear-gradient(180deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.13) 28%, rgba(5,5,5,.30) 50%, rgba(5,5,5,.76) 100%),
+      linear-gradient(90deg, rgba(5,5,5,.12) 0%, rgba(5,5,5,.04) 55%, rgba(5,5,5,.10) 100%);
+  }
+
+  /* Slightly wider hero canvas than the body gutters gives the headline room without crowding body copy elsewhere. */
+  .hero-content.container {
+    width: calc(100% - 34px) !important;
+    justify-content: center !important;
+    padding-top: calc(var(--header-h) + 84px) !important;
+    padding-bottom: 34px !important;
+    transform: translateY(5vh);
+  }
+
+  .hero-title {
+    max-width: 100% !important;
+    font-size: clamp(2.45rem, 11.2vw, 3.5rem) !important;
+    line-height: .91 !important;
+    margin-bottom: 22px !important;
+    letter-spacing: -.055em !important;
+  }
+
+  .hero-orange {
+    font-size: .88em !important;
+  }
+
+  .hero-bottom {
+    width: 100% !important;
+    max-width: 440px;
+    margin-inline: auto;
+    gap: 16px !important;
+    padding-top: 20px !important;
+  }
+
+  .hero-bottom p {
+    max-width: 360px !important;
+    font-size: .99rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .hero-actions {
+    width: min(100%, 360px) !important;
+    margin-inline: auto;
+    gap: 10px !important;
+  }
+
+  .button {
+    min-height: 46px !important;
+    font-size: 9.25px !important;
+  }
+
+  .hero-foot {
+    margin-top: 14px !important;
+    gap: 6px !important;
+    font-size: 7.3px !important;
+  }
+
+  /* Body copy remains comfortably inset even though the hero itself gets a wider canvas. */
+  .container:not(.hero-content),
+  .nav-shell {
+    width: calc(100% - 64px) !important;
+  }
+
+  /* Stronger mobile readability. */
+  .service h3,
+  .process-step h3 {
+    font-size: 1.08rem !important;
+  }
+  .service p,
+  .process-step p,
+  .intro-copy p,
+  .about-copy p,
+  .coverage-copy > p,
+  .faq details p,
+  .contact-copy > p {
+    font-size: .93rem !important;
+    line-height: 1.67 !important;
+  }
+
+  /* Centre short headings, left-align paragraphs. */
+  .intro-copy,
+  .about-copy p,
+  .coverage-copy > p,
+  .contact-copy > p {
+    text-align: left !important;
+  }
+  .intro-copy,
+  .about-copy p,
+  .coverage-copy > p,
+  .contact-copy > p {
+    max-width: 100% !important;
+  }
+
+  .capability-icon {
+    width: 25px !important;
+    height: 25px !important;
+  }
+  .capability-item strong {
+    font-size: .9rem !important;
+  }
+
+  .about-image-frame {
+    width: min(92%, 370px) !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-content.container {
+    width: calc(100% - 28px) !important;
+    transform: translateY(4vh);
+  }
+  .hero-title {
+    font-size: clamp(2.18rem, 10.8vw, 2.85rem) !important;
+  }
+  .hero-bottom p {
+    font-size: .94rem !important;
+  }
+}
