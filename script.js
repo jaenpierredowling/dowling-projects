@@ -65,35 +65,77 @@
   let trustCarouselTimer;
   let trustSlide = 0;
 
+  const getTrustSlideCount = () => {
+    if (!trustCarousel) return 0;
+    return Math.max(1, Math.ceil(trustCarousel.children.length / 2));
+  };
+
+  const getTrustSlideWidth = () => {
+    if (!trustCarousel) return 0;
+    return trustCarousel.getBoundingClientRect().width;
+  };
+
+  const goToTrustSlide = (index, behavior = 'smooth') => {
+    if (!trustCarousel || !trustCarouselQuery.matches) return;
+    const slideCount = getTrustSlideCount();
+    trustSlide = ((index % slideCount) + slideCount) % slideCount;
+    trustCarousel.scrollTo({ left: trustSlide * getTrustSlideWidth(), behavior });
+  };
+
   const moveTrustCarousel = () => {
     if (!trustCarousel || !trustCarouselQuery.matches || reducedMotion) return;
-    const slideWidth = trustCarousel.clientWidth;
-    trustSlide = (trustSlide + 1) % 3;
-    trustCarousel.scrollTo({ left: trustSlide * slideWidth, behavior: 'smooth' });
+    goToTrustSlide(trustSlide + 1);
   };
 
   const startTrustCarousel = () => {
     clearInterval(trustCarouselTimer);
     if (trustCarousel && trustCarouselQuery.matches && !reducedMotion) {
-      trustCarouselTimer = setInterval(moveTrustCarousel, 3800);
+      trustCarouselTimer = window.setInterval(moveTrustCarousel, 3200);
     }
+  };
+
+  const stopTrustCarousel = () => {
+    clearInterval(trustCarouselTimer);
+  };
+
+  const syncTrustSlide = () => {
+    if (!trustCarousel || !trustCarouselQuery.matches) return;
+    const width = getTrustSlideWidth();
+    if (!width) return;
+    trustSlide = Math.round(trustCarousel.scrollLeft / width);
   };
 
   const resetTrustCarousel = () => {
     if (!trustCarousel) return;
+    stopTrustCarousel();
     trustSlide = 0;
-    trustCarousel.scrollTo({ left: 0, behavior: 'auto' });
-    startTrustCarousel();
+    if (trustCarouselQuery.matches) {
+      goToTrustSlide(0, 'auto');
+      startTrustCarousel();
+    } else {
+      trustCarousel.scrollTo({ left: 0, behavior: 'auto' });
+    }
   };
 
   if (trustCarousel) {
+    window.addEventListener('load', resetTrustCarousel);
     startTrustCarousel();
-    trustCarousel.addEventListener('pointerdown', () => clearInterval(trustCarouselTimer));
+    trustCarousel.addEventListener('scroll', syncTrustSlide, { passive: true });
+    trustCarousel.addEventListener('pointerdown', stopTrustCarousel);
     trustCarousel.addEventListener('pointerup', startTrustCarousel);
+    trustCarousel.addEventListener('pointercancel', startTrustCarousel);
+    trustCarousel.addEventListener('mouseenter', stopTrustCarousel);
+    trustCarousel.addEventListener('mouseleave', startTrustCarousel);
+    trustCarousel.addEventListener('touchstart', stopTrustCarousel, { passive: true });
     trustCarousel.addEventListener('touchend', startTrustCarousel, { passive: true });
     trustCarouselQuery.addEventListener?.('change', resetTrustCarousel);
-    window.addEventListener('resize', () => {
-      if (!trustCarouselQuery.matches) resetTrustCarousel();
+    window.addEventListener('resize', resetTrustCarousel);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopTrustCarousel();
+      } else {
+        startTrustCarousel();
+      }
     });
   }
 
