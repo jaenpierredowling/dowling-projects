@@ -14,6 +14,22 @@
   setHeader();
   window.addEventListener('scroll', setHeader, { passive: true });
 
+
+  // Prevent the iOS/Safari rubber-band gesture from pulling the hero down past the top of the page.
+  let topTouchStartY = 0;
+  document.addEventListener('touchstart', (event) => {
+    if (window.scrollY <= 0 && event.touches?.length) {
+      topTouchStartY = event.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  document.addEventListener('touchmove', (event) => {
+    if (window.scrollY <= 0 && event.touches?.length) {
+      const currentY = event.touches[0].clientY;
+      if (currentY > topTouchStartY) event.preventDefault();
+    }
+  }, { passive: false });
+
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
       const open = menuButton.getAttribute('aria-expanded') === 'true';
@@ -90,7 +106,7 @@
   const startTrustCarousel = () => {
     clearInterval(trustCarouselTimer);
     if (trustCarousel && trustCarouselQuery.matches && !reducedMotion) {
-      trustCarouselTimer = window.setInterval(moveTrustCarousel, 3200);
+      trustCarouselTimer = window.setInterval(moveTrustCarousel, 2800);
     }
   };
 
@@ -122,12 +138,12 @@
     startTrustCarousel();
     trustCarousel.addEventListener('scroll', syncTrustSlide, { passive: true });
     trustCarousel.addEventListener('pointerdown', stopTrustCarousel);
-    trustCarousel.addEventListener('pointerup', startTrustCarousel);
-    trustCarousel.addEventListener('pointercancel', startTrustCarousel);
+    trustCarousel.addEventListener('pointerup', () => window.setTimeout(startTrustCarousel, 500));
+    trustCarousel.addEventListener('pointercancel', () => window.setTimeout(startTrustCarousel, 500));
     trustCarousel.addEventListener('mouseenter', stopTrustCarousel);
     trustCarousel.addEventListener('mouseleave', startTrustCarousel);
     trustCarousel.addEventListener('touchstart', stopTrustCarousel, { passive: true });
-    trustCarousel.addEventListener('touchend', startTrustCarousel, { passive: true });
+    trustCarousel.addEventListener('touchend', () => window.setTimeout(startTrustCarousel, 500), { passive: true });
     trustCarouselQuery.addEventListener?.('change', resetTrustCarousel);
     window.addEventListener('resize', resetTrustCarousel);
     document.addEventListener('visibilitychange', () => {
