@@ -1,0 +1,9 @@
+{
+  "name": "dowling-projects-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dowling Projects one-page website",
+  "scripts": {
+    "dev": "python3 -m http.server 8080"
+  }
+}
