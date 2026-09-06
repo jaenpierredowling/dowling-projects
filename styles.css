@@ -165,7 +165,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .capability-item:hover::after { width: 100%; }
 .capability-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
 .capability-icon img { width: 100%; height: 100%; object-fit: contain; display: block; opacity: 1; filter: none; }
-.capability-item strong { font-size: clamp(.88rem, 1.2vw, 1rem); line-height: 1.2; font-weight: 720; letter-spacing: -.02em; color: #fff; max-width: 150px; margin: 0 auto; }
+.capability-item strong { font-size: clamp(.88rem, 1.2vw, 1rem); line-height: 1.18; font-weight: 720; letter-spacing: -.02em; color: #fff; width: 100%; max-width: 170px; margin: 0 auto; text-align: center; }
 .capability-item span { max-width: 190px; font-size: 10px; line-height: 1.45; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.55); }
 
 .intro { padding: 128px 0 112px; }
@@ -209,7 +209,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .experience-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(70px, 10vw, 150px); }
 .experience-intro h2 { font-size: clamp(2.6rem, 5vw, 5rem); }
 .experience-intro > p { margin: 26px 0 38px; max-width: 480px; font-size: 1.03rem; line-height: 1.68; color: #58564f; }
-.experience-image { margin: 0; width: min(100%, 460px); aspect-ratio: 16/9; overflow: hidden; background: #111; }
+.experience-image { margin: 0; width: min(100%, 460px); aspect-ratio: 1 / 1; overflow: hidden; background: #111; }
 .experience-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .65s var(--ease); }
 .experience-image:hover img { transform: scale(1.035); }
 .project-list { padding-top: 54px; }
@@ -242,15 +242,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .process-step h3 { margin: 0 0 14px; font-size: 1.25rem; line-height: 1.12; letter-spacing: -.025em; }
 .process-step p { margin: 0; max-width: 250px; font-size: .9rem; line-height: 1.62; color: #64615b; }
 
-.about { display: grid; grid-template-columns: 1fr 1fr; min-height: 700px; }
-.about-image { position: relative; overflow: hidden; min-height: 640px; }
+.about { display: grid; grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr); min-height: 720px; }
+.about-image { position: relative; overflow: hidden; min-height: 720px; }
 .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; transition: transform .9s var(--ease); }
 .about-image:hover img { transform: scale(1.025); }
 .image-label {
   position: absolute; left: 28px; bottom: 28px; padding: 11px 13px; background: rgba(0,0,0,.72); color: #fff;
   font-size: 9px; line-height: 1.35; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; backdrop-filter: blur(8px);
 }
-.about-copy { padding: clamp(75px, 8vw, 130px); align-self: center; }
+.about-copy { padding: clamp(72px, 6.2vw, 112px); align-self: center; }
 .about-copy h2 { font-size: clamp(2.6rem, 4.8vw, 5rem); margin-bottom: 38px; }
 .about-copy p { max-width: 680px; font-size: 1rem; line-height: 1.7; color: #494742; }
 .about-copy .lead { color: var(--ink); }
@@ -323,9 +323,46 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
 .hero-kicker { display: none; }
 .pricing-title { padding-top: 0; }
 @media (max-width: 880px) {
+  .hero-content { text-align: center; }
+  .hero-title { margin-inline: auto; }
+  .hero-bottom p { max-width: 640px; margin-inline: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-foot { justify-content: center; text-align: center; }
+
+  .capability-item { justify-items: center; text-align: center; }
+
+  .intro-grid { text-align: center; }
+  .section-heading h2, .intro-copy { margin-inline: auto; }
+  .intro-copy p { margin-left: auto; margin-right: auto; }
+
+  .section-topline { text-align: center; }
+  .section-topline h2 { margin-inline: auto; }
+
+  .experience-intro { text-align: center; }
+  .experience-intro > p, .experience-image { margin-left: auto; margin-right: auto; }
+  .experience-image { width: min(100%, 620px); aspect-ratio: 16 / 10; }
+
+  .pricing-grid { text-align: center; }
+  .pricing-copy p { margin-left: auto; margin-right: auto; }
+  .pricing-note { display: inline-block; text-align: left; }
+
+  .about-copy { text-align: center; }
+  .about-copy p { margin-left: auto; margin-right: auto; }
+
+  .coverage-copy { text-align: center; }
+  .coverage-copy > p { margin-left: auto; margin-right: auto; }
+
+  .contact-copy { text-align: center; }
+  .contact-copy > p { margin-left: auto; margin-right: auto; }
+  .contact-actions { justify-content: center; }
+
   .capability-item span { max-width: 100%; }
 }
 @media (max-width: 620px) {
+  .hero-title, .hero-bottom, .hero-foot { text-align: center; }
+  .hero-actions { justify-content: center; }
+  .section-heading, .section-topline, .experience-intro, .pricing-grid, .about-copy, .coverage-copy, .contact-copy { text-align: center; }
+
   .hero-media { background-position: 41% center; }
   .capability-icon { width: 24px; height: 24px; }
   .capability-item strong { font-size: 1rem; }
@@ -417,7 +454,7 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .positioning { padding: 88px 0 92px; }
   .positioning-inner { text-align: left; }
   .positioning-inner p { margin-inline: 0; }
-  .experience-image { aspect-ratio: 4/3; }
+  .experience-image { width: 100%; aspect-ratio: 4 / 3; }
   .project-list { padding-top: 0; }
   .project-row { grid-template-columns: 44px 1fr; min-height: 58px; }
   .pricing-section { padding: 78px 0; }
@@ -442,3 +479,86 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
 }
 
 .capability-item span { display: none; }
+
+/* Final tablet/mobile alignment pass */
+@media (max-width: 880px) {
+  .hero-content,
+  .hero-bottom,
+  .hero-foot,
+  .intro-grid,
+  .section-topline,
+  .experience-intro,
+  .pricing-grid,
+  .about-copy,
+  .coverage-copy,
+  .contact-copy {
+    text-align: center;
+  }
+
+  .hero-title,
+  .section-heading h2,
+  .section-topline h2,
+  .intro-copy,
+  .experience-intro > p,
+  .pricing-copy p,
+  .about-copy p,
+  .coverage-copy > p,
+  .contact-copy > p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions,
+  .contact-actions {
+    justify-content: center;
+  }
+
+  .hero-foot {
+    justify-content: center;
+  }
+
+  .capability-item {
+    justify-items: center;
+    text-align: center;
+  }
+
+  .experience-image {
+    width: min(100%, 620px);
+    aspect-ratio: 16 / 10;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pricing-note {
+    display: inline-block;
+    text-align: left;
+  }
+
+  .service,
+  .project-list,
+  .process-step,
+  .faq,
+  .quote-form {
+    text-align: left;
+  }
+}
+
+@media (max-width: 620px) {
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .positioning-inner {
+    text-align: center;
+  }
+
+  .positioning-inner p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .experience-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+  }
+}
