@@ -375,7 +375,7 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .hero { min-height: 670px; height: 88svh; }
   .hero-content { padding-top: 130px; padding-bottom: 38px; }
   .hero-kicker { top: 105px; font-size: 9px; }
-  .hero-title { font-size: clamp(2.4rem, 10.8vw, 4rem); line-height: .89; letter-spacing: -.058em; margin-bottom: 24px; }
+  .hero-title { font-size: clamp(2.15rem, 10.8vw, 4rem); line-height: .89; letter-spacing: -.058em; margin-bottom: 24px; }
   .hero-line { white-space: nowrap; }
   .hero-bottom { padding-top: 20px; }
   .hero-bottom p { font-size: .98rem; }
@@ -500,9 +500,9 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
     line-height: .98;
   }
 
-  .positioning-inner h2 { font-size: 2.35rem; line-height: .98; }
-  .contact-copy h2 { font-size: 2.45rem; }
-  .coverage h2 { font-size: 2.35rem; }
+  .positioning-inner h2 { font-size: 2.05rem; line-height: .98; }
+  .contact-copy h2 { font-size: 2.25rem; }
+  .coverage h2 { font-size: 2.1rem; }
 
   .hero-actions { gap: 8px; }
   .hero-actions .button { padding-inline: 10px; font-size: 9px; }
