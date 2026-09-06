@@ -66,10 +66,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .site-header.scrolled .nav-shell { height: 68px; }
 .wordmark {
-  justify-self: start; display: inline-flex; flex-direction: column; gap: 3px;
-  font-size: 12px; line-height: .9; font-weight: 850; letter-spacing: .1em;
+  justify-self: start; display: inline-flex; align-items: center;
 }
-.wordmark span:last-child { color: var(--orange); }
+.wordmark-logo { height: 36px; width: auto; display: block; }
+.footer-wordmark .wordmark-logo { height: 38px; }
 .desktop-nav { display: flex; gap: clamp(20px, 2.4vw, 38px); align-items: center; }
 .desktop-nav a, .site-footer nav a {
   position: relative; font-size: 12px; font-weight: 620; letter-spacing: .03em; opacity: .82;
@@ -90,7 +90,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .menu-toggle, .mobile-menu { display: none; }
 
 .hero {
-  position: relative; min-height: 790px; height: min(94vh, 980px); overflow: hidden; background: #090909; color: #fff;
+  position: relative; min-height: 790px; height: 100svh; max-height: 980px; overflow: hidden; background: #090909; color: #fff;
 }
 .hero-media {
   position: absolute; inset: 0; background-image: url("assets/hero-cape-town.jpg"); background-size: cover;
@@ -242,15 +242,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .process-step h3 { margin: 0 0 14px; font-size: 1.25rem; line-height: 1.12; letter-spacing: -.025em; }
 .process-step p { margin: 0; max-width: 250px; font-size: .9rem; line-height: 1.62; color: #64615b; }
 
-.about { display: grid; grid-template-columns: minmax(0, .68fr) minmax(0, 1.32fr); min-height: 720px; }
-.about-image { position: relative; overflow: hidden; min-height: 720px; }
-.about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; transition: transform .9s var(--ease); }
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: stretch; min-height: 0; }
+.about-image { position: relative; min-height: 0; display: flex; align-items: center; justify-content: center; padding: clamp(34px, 4vw, 54px); background: var(--stone); }
+.about-image-frame { position: relative; width: min(100%, 520px); aspect-ratio: 4 / 5; overflow: hidden; background: #d8d3ca; }
+.about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; transition: transform .9s var(--ease); }
 .about-image:hover img { transform: scale(1.025); }
 .image-label {
-  position: absolute; left: 28px; bottom: 28px; padding: 11px 13px; background: rgba(0,0,0,.72); color: #fff;
+  position: absolute; left: 22px; bottom: 22px; padding: 11px 13px; background: rgba(0,0,0,.72); color: #fff;
   font-size: 9px; line-height: 1.35; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; backdrop-filter: blur(8px);
 }
-.about-copy { padding: clamp(72px, 6.2vw, 112px); align-self: center; }
+.about-copy { padding: clamp(72px, 6vw, 96px); align-self: center; }
 .about-copy h2 { font-size: clamp(2.6rem, 4.8vw, 5rem); margin-bottom: 38px; }
 .about-copy p { max-width: 680px; font-size: 1rem; line-height: 1.7; color: #494742; }
 .about-copy .lead { color: var(--ink); }
@@ -399,7 +400,7 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .site-header.scrolled .mobile-menu { inset-block-start: 68px; }
   .mobile-menu.open { height: calc(100vh - 68px); opacity: 1; padding: 28px 22px 100px; }
   .mobile-menu a { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 1.5rem; font-weight: 650; letter-spacing: -.02em; }
-  .hero { min-height: 720px; height: 90vh; }
+  .hero { min-height: 720px; height: 100svh; }
   .hero-title { font-size: clamp(4rem, 12vw, 6.2rem); }
   .hero-bottom { grid-template-columns: 1fr; gap: 28px; }
   .hero-actions { justify-content: flex-start; }
@@ -418,7 +419,8 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .process-step:nth-child(3), .process-step:nth-child(4) { border-top: 0; }
   .process-step:nth-child(3) { padding-left: 0; }
   .about { grid-template-columns: 1fr; }
-  .about-image { min-height: 560px; }
+  .about-image { min-height: 0; padding: 34px 34px 0; }
+  .about-image-frame { width: min(100%, 540px); aspect-ratio: 4 / 5; }
   .about-copy { padding: 80px 42px; }
   .contact-copy { position: static; }
   .site-footer nav { flex-wrap: wrap; justify-content: flex-end; }
@@ -430,8 +432,8 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .container, .nav-shell { width: calc(100% - 34px); }
   .site-header.scrolled .nav-shell { height: 60px; }
   .site-header.scrolled .mobile-menu { inset-block-start: 60px; }
-  .wordmark { font-size: 10px; }
-  .hero { min-height: 670px; height: 88svh; }
+  .wordmark-logo { height: 30px; }
+  .hero { min-height: 670px; height: 100svh; }
   .hero-content { padding-top: 130px; padding-bottom: 38px; }
   .hero-kicker { top: 105px; font-size: 9px; }
   .hero-title { font-size: clamp(3.05rem, 14.4vw, 4.9rem); line-height: .9; letter-spacing: -.058em; margin-bottom: 24px; }
@@ -461,7 +463,8 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .process-grid { grid-template-columns: 1fr; }
   .process-step, .process-step + .process-step, .process-step:nth-child(3) { min-height: auto; padding: 30px 0 34px; border-right: 0; border-top: 1px solid var(--line); }
   .process-step > span { margin-bottom: 30px; }
-  .about-image { min-height: 440px; }
+  .about-image { min-height: 0; padding: 26px 22px 0; }
+  .about-image-frame { width: 100%; max-width: 420px; aspect-ratio: 4 / 5; }
   .about-copy { padding: 72px 22px 80px; }
   .coverage { padding-block: 84px; }
   .coverage-areas { grid-template-columns: 1fr; }
@@ -561,4 +564,15 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
     width: 100%;
     aspect-ratio: 4 / 3;
   }
+}
+
+
+@media (max-width: 880px) {
+  .wordmark-logo { height: 32px; }
+  .footer-wordmark .wordmark-logo { height: 34px; }
+}
+
+@media (max-width: 620px) {
+  .wordmark-logo { height: 26px; }
+  .footer-wordmark .wordmark-logo { height: 28px; }
 }
