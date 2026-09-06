@@ -59,6 +59,44 @@
     }, { passive: true });
   }
 
+
+  const trustCarousel = document.querySelector('[data-trust-carousel]');
+  const trustCarouselQuery = window.matchMedia('(max-width: 1100px)');
+  let trustCarouselTimer;
+  let trustSlide = 0;
+
+  const moveTrustCarousel = () => {
+    if (!trustCarousel || !trustCarouselQuery.matches || reducedMotion) return;
+    const slideWidth = trustCarousel.clientWidth;
+    trustSlide = (trustSlide + 1) % 3;
+    trustCarousel.scrollTo({ left: trustSlide * slideWidth, behavior: 'smooth' });
+  };
+
+  const startTrustCarousel = () => {
+    clearInterval(trustCarouselTimer);
+    if (trustCarousel && trustCarouselQuery.matches && !reducedMotion) {
+      trustCarouselTimer = setInterval(moveTrustCarousel, 3800);
+    }
+  };
+
+  const resetTrustCarousel = () => {
+    if (!trustCarousel) return;
+    trustSlide = 0;
+    trustCarousel.scrollTo({ left: 0, behavior: 'auto' });
+    startTrustCarousel();
+  };
+
+  if (trustCarousel) {
+    startTrustCarousel();
+    trustCarousel.addEventListener('pointerdown', () => clearInterval(trustCarouselTimer));
+    trustCarousel.addEventListener('pointerup', startTrustCarousel);
+    trustCarousel.addEventListener('touchend', startTrustCarousel, { passive: true });
+    trustCarouselQuery.addEventListener?.('change', resetTrustCarousel);
+    window.addEventListener('resize', () => {
+      if (!trustCarouselQuery.matches) resetTrustCarousel();
+    });
+  }
+
   document.querySelectorAll('details').forEach((item) => {
     item.addEventListener('toggle', () => {
       if (!item.open) return;
