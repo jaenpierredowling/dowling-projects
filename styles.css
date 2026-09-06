@@ -155,7 +155,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .capability-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
 .capability-item {
   min-height: 122px; padding: 22px 18px; border-right: 1px solid var(--line-dark); position: relative;
-  display: grid; align-content: center; justify-items: start; gap: 14px; overflow: hidden;
+  display: grid; align-content: center; justify-items: center; text-align: center; gap: 12px; overflow: hidden;
 }
 .capability-item:first-child { border-left: 1px solid var(--line-dark); }
 .capability-item::after {
@@ -163,9 +163,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
   transition: width .35s var(--ease);
 }
 .capability-item:hover::after { width: 100%; }
-.capability-icon { width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; }
+.capability-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
 .capability-icon img { width: 100%; height: 100%; object-fit: contain; display: block; opacity: 1; filter: none; }
-.capability-item strong { font-size: clamp(.88rem, 1.2vw, 1rem); line-height: 1.18; font-weight: 720; letter-spacing: -.02em; color: #fff; max-width: 160px; }
+.capability-item strong { font-size: clamp(.88rem, 1.2vw, 1rem); line-height: 1.2; font-weight: 720; letter-spacing: -.02em; color: #fff; max-width: 150px; margin: 0 auto; }
 .capability-item span { max-width: 190px; font-size: 10px; line-height: 1.45; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,.55); }
 
 .intro { padding: 128px 0 112px; }
@@ -210,7 +210,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .experience-intro h2 { font-size: clamp(2.6rem, 5vw, 5rem); }
 .experience-intro > p { margin: 26px 0 38px; max-width: 480px; font-size: 1.03rem; line-height: 1.68; color: #58564f; }
 .experience-image { margin: 0; width: min(100%, 460px); aspect-ratio: 16/9; overflow: hidden; background: #111; }
-.experience-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .65s var(--ease); }
+.experience-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .65s var(--ease); }
 .experience-image:hover img { transform: scale(1.035); }
 .project-list { padding-top: 54px; }
 .project-list h3 { margin: 0 0 22px; font-size: 12px; text-transform: uppercase; letter-spacing: .13em; color: var(--orange); }
@@ -244,11 +244,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .about { display: grid; grid-template-columns: 1fr 1fr; min-height: 700px; }
 .about-image { position: relative; overflow: hidden; min-height: 640px; }
-.about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; transition: transform .9s var(--ease); }
+.about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block; transition: transform .9s var(--ease); }
 .about-image:hover img { transform: scale(1.025); }
 .image-label {
   position: absolute; left: 28px; bottom: 28px; padding: 11px 13px; background: rgba(0,0,0,.72); color: #fff;
-  font-size: 9px; line-height: 1.35; text-transform: uppercase; letter-spacing: .12em; backdrop-filter: blur(8px);
+  font-size: 9px; line-height: 1.35; text-transform: uppercase; letter-spacing: .12em; white-space: nowrap; backdrop-filter: blur(8px);
 }
 .about-copy { padding: clamp(75px, 8vw, 130px); align-self: center; }
 .about-copy h2 { font-size: clamp(2.6rem, 4.8vw, 5rem); margin-bottom: 38px; }
@@ -405,7 +405,7 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .button { padding-inline: 14px; }
   .hero-foot { display: grid; gap: 8px; font-size: 8px; }
   .capability-grid { grid-template-columns: 1fr 1fr; }
-  .capability-item { min-height: 112px; padding: 16px 14px; gap: 10px; }
+  .capability-item { min-height: 108px; padding: 16px 14px; gap: 10px; }
   .capability-item:nth-child(5) { grid-column: auto; }
   .capability-item:last-child { grid-column: 1 / -1; }
   .intro, .experience, .quote-process, .contact { padding-block: 82px; }
