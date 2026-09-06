@@ -7,12 +7,25 @@
   const status = document.querySelector('.form-status');
   const submitButton = document.querySelector('.submit-button');
 
-  const setHeader = () => {
-    header?.classList.toggle('scrolled', window.scrollY > 30);
+  let headerScrolled = null;
+  let headerTicking = false;
+
+  const updateHeader = () => {
+    const next = window.scrollY > 30;
+    if (next !== headerScrolled) {
+      header?.classList.toggle('scrolled', next);
+      headerScrolled = next;
+    }
+    headerTicking = false;
   };
 
-  setHeader();
-  window.addEventListener('scroll', setHeader, { passive: true });
+  updateHeader();
+  window.addEventListener('scroll', () => {
+    if (!headerTicking) {
+      headerTicking = true;
+      window.requestAnimationFrame(updateHeader);
+    }
+  }, { passive: true });
 
 
   // Prevent the iOS/Safari rubber-band gesture from pulling the hero down past the top of the page.
@@ -68,92 +81,6 @@
     });
   }
 
-  if (!reducedMotion && heroMedia) {
-    window.addEventListener('scroll', () => {
-      const y = Math.min(window.scrollY * 0.08, 40);
-      heroMedia.style.transform = `scale(1.035) translateY(${y}px)`;
-    }, { passive: true });
-  }
-
-
-  const trustCarousel = document.querySelector('[data-trust-carousel]');
-  const trustCarouselQuery = window.matchMedia('(max-width: 1100px)');
-  let trustCarouselTimer;
-  let trustSlide = 0;
-
-  const getTrustSlideCount = () => {
-    if (!trustCarousel) return 0;
-    return Math.max(1, Math.ceil(trustCarousel.children.length / 2));
-  };
-
-  const getTrustSlideWidth = () => {
-    if (!trustCarousel) return 0;
-    return trustCarousel.getBoundingClientRect().width;
-  };
-
-  const goToTrustSlide = (index, behavior = 'smooth') => {
-    if (!trustCarousel || !trustCarouselQuery.matches) return;
-    const slideCount = getTrustSlideCount();
-    trustSlide = ((index % slideCount) + slideCount) % slideCount;
-    trustCarousel.scrollTo({ left: trustSlide * getTrustSlideWidth(), behavior });
-  };
-
-  const moveTrustCarousel = () => {
-    if (!trustCarousel || !trustCarouselQuery.matches || reducedMotion) return;
-    goToTrustSlide(trustSlide + 1);
-  };
-
-  const startTrustCarousel = () => {
-    clearInterval(trustCarouselTimer);
-    if (trustCarousel && trustCarouselQuery.matches && !reducedMotion) {
-      trustCarouselTimer = window.setInterval(moveTrustCarousel, 2800);
-    }
-  };
-
-  const stopTrustCarousel = () => {
-    clearInterval(trustCarouselTimer);
-  };
-
-  const syncTrustSlide = () => {
-    if (!trustCarousel || !trustCarouselQuery.matches) return;
-    const width = getTrustSlideWidth();
-    if (!width) return;
-    trustSlide = Math.round(trustCarousel.scrollLeft / width);
-  };
-
-  const resetTrustCarousel = () => {
-    if (!trustCarousel) return;
-    stopTrustCarousel();
-    trustSlide = 0;
-    if (trustCarouselQuery.matches) {
-      goToTrustSlide(0, 'auto');
-      startTrustCarousel();
-    } else {
-      trustCarousel.scrollTo({ left: 0, behavior: 'auto' });
-    }
-  };
-
-  if (trustCarousel) {
-    window.addEventListener('load', resetTrustCarousel);
-    startTrustCarousel();
-    trustCarousel.addEventListener('scroll', syncTrustSlide, { passive: true });
-    trustCarousel.addEventListener('pointerdown', stopTrustCarousel);
-    trustCarousel.addEventListener('pointerup', () => window.setTimeout(startTrustCarousel, 500));
-    trustCarousel.addEventListener('pointercancel', () => window.setTimeout(startTrustCarousel, 500));
-    trustCarousel.addEventListener('mouseenter', stopTrustCarousel);
-    trustCarousel.addEventListener('mouseleave', startTrustCarousel);
-    trustCarousel.addEventListener('touchstart', stopTrustCarousel, { passive: true });
-    trustCarousel.addEventListener('touchend', () => window.setTimeout(startTrustCarousel, 500), { passive: true });
-    trustCarouselQuery.addEventListener?.('change', resetTrustCarousel);
-    window.addEventListener('resize', resetTrustCarousel);
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopTrustCarousel();
-      } else {
-        startTrustCarousel();
-      }
-    });
-  }
 
   document.querySelectorAll('details').forEach((item) => {
     item.addEventListener('toggle', () => {

@@ -1073,3 +1073,211 @@ html, body {
   }
   .capability-set[aria-hidden="true"] { display: none; }
 }
+
+
+/* === FINAL RESPONSIVE STABILITY PASS 2026-09-06 === */
+
+/* The hero, and only the hero, owns the first viewport on every device. */
+.hero {
+  height: 100svh !important;
+  min-height: 100svh !important;
+  max-height: none !important;
+}
+
+/* Keep the background image static while the page scrolls. This is much smoother on touch devices. */
+.hero-media {
+  transform: none !important;
+  will-change: auto !important;
+}
+
+/* Slower, continuous trust ticker. */
+.capability-track {
+  animation-duration: 36s !important;
+  animation-timing-function: linear !important;
+  animation-iteration-count: infinite !important;
+}
+
+/* Keep heading glyphs clear of section edges in stitched/full-page captures. */
+.coverage h2,
+.contact h2,
+.about h2,
+.experience h2 {
+  overflow: visible;
+  padding-top: .035em;
+}
+
+/* Slightly improve portrait scale without losing the beige framing. */
+.about-image-frame {
+  width: min(78%, 480px);
+}
+
+/* Tablet / iPad: centre the two hero lines on the same axis and guarantee neither can clip. */
+@media (min-width: 621px) and (max-width: 1100px) {
+  .hero-content {
+    justify-content: flex-end !important;
+    padding-top: calc(var(--header-h) + 42px) !important;
+    padding-bottom: clamp(52px, 7vh, 82px) !important;
+    text-align: center;
+  }
+
+  .hero-title {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto 26px !important;
+    padding: 0 !important;
+    font-size: clamp(3.45rem, 8vw, 5rem) !important;
+    line-height: .92 !important;
+    letter-spacing: -.052em !important;
+    text-align: center !important;
+  }
+
+  .hero-line {
+    display: block;
+    width: 100%;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  .hero-orange {
+    font-size: .94em !important;
+  }
+
+  .hero-bottom {
+    width: min(100%, 780px);
+    margin-inline: auto;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    text-align: center;
+  }
+
+  .hero-bottom p {
+    margin-inline: auto;
+    max-width: 680px;
+  }
+
+  .hero-actions,
+  .hero-foot {
+    justify-content: center !important;
+  }
+
+  .hero-foot {
+    text-align: center;
+  }
+
+  /* Don't resize the fixed nav when it crosses the scroll threshold. */
+  .site-header.scrolled .nav-shell {
+    height: var(--header-h) !important;
+  }
+  .site-header.scrolled {
+    background: rgba(10,10,10,.96);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Opacity-only reveals are smoother than moving every block on touch screens. */
+  .reveal {
+    transform: none !important;
+    transition: opacity .42s ease !important;
+  }
+
+  .about-image-frame {
+    width: min(74%, 430px);
+  }
+}
+
+/* Mobile: a full first viewport, but with the content compact enough that it never overflows. */
+@media (max-width: 620px) {
+  .hero-content {
+    justify-content: flex-end !important;
+    padding-top: calc(var(--header-h) + 28px) !important;
+    padding-bottom: clamp(42px, 7svh, 62px) !important;
+    text-align: center;
+  }
+
+  .hero-title {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto 17px !important;
+    padding: 0 !important;
+    font-size: clamp(2rem, 9.5vw, 3.05rem) !important;
+    line-height: .93 !important;
+    letter-spacing: -.05em !important;
+  }
+
+  .hero-line {
+    width: 100%;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  .hero-orange {
+    font-size: .86em !important;
+  }
+
+  .hero-bottom {
+    gap: 13px !important;
+    padding-top: 15px !important;
+  }
+
+  .hero-bottom p {
+    max-width: 31rem !important;
+    margin-inline: auto !important;
+    font-size: .92rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .hero-actions {
+    justify-content: center !important;
+  }
+
+  .hero-foot {
+    margin-top: 10px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .site-header.scrolled .nav-shell {
+    height: var(--header-h) !important;
+  }
+  .site-header.scrolled {
+    background: rgba(10,10,10,.97);
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .reveal {
+    transform: none !important;
+    transition: opacity .38s ease !important;
+  }
+
+  /* Slightly larger portrait than the previous pass; still framed by beige. */
+  .about-image-frame {
+    width: min(88%, 360px);
+  }
+
+  /* Keep small body copy readable, especially in service/process cards. */
+  .service p,
+  .process-step p,
+  .project-row strong,
+  .intro-copy p,
+  .about-copy p,
+  .coverage-copy > p,
+  .faq details p,
+  .contact-copy > p {
+    font-size: max(.88rem, 13px);
+  }
+}
+
+/* Extra guard for the narrowest phones. */
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: clamp(1.85rem, 9.1vw, 2.5rem) !important;
+  }
+  .hero-bottom p {
+    font-size: .87rem !important;
+  }
+  .button {
+    min-height: 42px;
+    font-size: 8.5px;
+  }
+}
