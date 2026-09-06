@@ -85,8 +85,11 @@
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const reveals = document.querySelectorAll('.reveal');
 
-  if (reducedMotion || !('IntersectionObserver' in window)) {
-    reveals.forEach((item) => item.classList.add('visible'));
+  if (reducedMotion || touchViewport.matches || !('IntersectionObserver' in window)) {
+    reveals.forEach((item) => {
+      item.style.transitionDelay = '0ms';
+      item.classList.add('visible');
+    });
   } else {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
