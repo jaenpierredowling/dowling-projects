@@ -324,602 +324,10 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 4px; }
 
 
-.hero-kicker { display: none; }
-.pricing-title { padding-top: 0; }
-@media (max-width: 880px) {
-  .hero-content { text-align: center; }
-  .hero-title { margin-inline: auto; }
-  .hero-bottom p { max-width: 640px; margin-inline: auto; }
-  .hero-actions { justify-content: center; }
-  .hero-foot { justify-content: center; text-align: center; }
 
-  .capability-item { justify-items: center; text-align: center; }
+/* === CONSOLIDATED RESPONSIVE + PERFORMANCE PASS === */
 
-  .intro-grid { text-align: center; }
-  .section-heading h2, .intro-copy { margin-inline: auto; }
-  .intro-copy p { margin-left: auto; margin-right: auto; }
-
-  .section-topline { text-align: center; }
-  .section-topline h2 { margin-inline: auto; }
-
-  .experience-intro { text-align: center; }
-  .experience-intro > p, .experience-image { margin-left: auto; margin-right: auto; }
-  .experience-image { width: min(100%, 620px); aspect-ratio: 16 / 10; }
-
-  .pricing-grid { text-align: center; }
-  .pricing-copy p { margin-left: auto; margin-right: auto; }
-  .pricing-note { display: inline-block; text-align: left; }
-
-  .about-copy { text-align: center; }
-  .about-copy p { margin-left: auto; margin-right: auto; }
-
-  .coverage-copy { text-align: center; }
-  .coverage-copy > p { margin-left: auto; margin-right: auto; }
-
-  .contact-copy { text-align: center; }
-  .contact-copy > p { margin-left: auto; margin-right: auto; }
-  .contact-actions { justify-content: center; }
-
-  .capability-item span { max-width: 100%; }
-}
-@media (max-width: 620px) {
-  .hero-title, .hero-bottom, .hero-foot { text-align: center; }
-  .hero-actions { justify-content: center; }
-  .section-heading, .section-topline, .experience-intro, .pricing-grid, .about-copy, .coverage-copy, .contact-copy { text-align: center; }
-
-  .hero-media { background-position: 41% center; }
-  .capability-icon { width: 24px; height: 24px; }
-  .capability-item strong { font-size: 1rem; }
-  .capability-item span { font-size: 9px; }
-}
-
-
-/* Two-at-a-time trust carousel for tablet and mobile. */
-@media (max-width: 1100px) {
-  .capability-rail { overflow: hidden; }
-  .capability-rail .container {
-    width: 100%;
-    max-width: none;
-  }
-  .capability-grid {
-    display: flex;
-    grid-template-columns: none;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  .capability-grid::-webkit-scrollbar { display: none; }
-  .capability-item,
-  .capability-item:nth-child(5),
-  .capability-item:last-child {
-    flex: 0 0 50%;
-    min-width: 50%;
-    grid-column: auto;
-    scroll-snap-align: start;
-    border-left: 0;
-  }
-  .capability-item:nth-child(odd) { border-left: 1px solid var(--line-dark); }
-  .capability-clone { display: grid; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
-  .reveal { opacity: 1; transform: none; }
-}
-
-@media (max-width: 1100px) {
-  :root { --header-h: 74px; }
-  .container, .nav-shell { width: min(calc(100% - 64px), var(--max)); }
-  .desktop-nav { gap: 18px; }
-  .hero-title { font-size: clamp(4rem, 10vw, 7.3rem); }
-  .capability-item { padding-inline: 18px; }
-  .intro-grid, .experience-grid, .contact-grid { gap: 72px; }
-  .about-copy { padding: 72px; }
-}
-
-@media (max-width: 880px) {
-  .desktop-nav, .nav-cta { display: none; }
-  .nav-shell { grid-template-columns: 1fr auto; }
-  .menu-toggle { justify-self: end; display: grid; gap: 6px; width: 42px; height: 42px; place-content: center; border: 0; background: transparent; color: #fff; cursor: pointer; }
-  .menu-toggle span { width: 22px; height: 1px; background: currentColor; transition: transform .25s ease; }
-  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
-  .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
-  .mobile-menu {
-    display: flex; position: fixed; inset: var(--header-h) 0 auto; height: 0; overflow: hidden; background: rgba(10,10,10,.98); color: #fff;
-    flex-direction: column; opacity: 0; transition: height .35s var(--ease), opacity .25s ease; border-top: 1px solid rgba(255,255,255,.1);
-  }
-  .site-header.scrolled .mobile-menu { inset-block-start: 68px; }
-  .mobile-menu.open { height: calc(100vh - 68px); opacity: 1; padding: 28px 22px 100px; }
-  .mobile-menu a { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 1.5rem; font-weight: 650; letter-spacing: -.02em; }
-  .hero { min-height: 720px; height: 100svh; }
-  .hero-title { font-size: clamp(4rem, 12vw, 6.2rem); }
-  .hero-bottom { grid-template-columns: 1fr; gap: 28px; }
-  .hero-actions { justify-content: flex-start; }
-
-  .intro-grid, .experience-grid, .pricing-grid, .coverage-grid, .contact-grid { grid-template-columns: 1fr; gap: 54px; }
-  .intro { padding: 95px 0 85px; }
-  .intro-copy { padding-top: 0; }
-  .section-topline { grid-template-columns: 1fr; gap: 22px; margin-bottom: 52px; }
-  .services-grid { grid-template-columns: repeat(2,1fr); }
-  .service:nth-child(3n+2), .service:nth-child(3n+3) { padding-left: 0; }
-  .service:nth-child(odd) { padding-right: 28px; border-right: 1px solid var(--line); }
-  .service:nth-child(even) { padding-left: 28px; padding-right: 0; border-right: 0; }
-  .process-grid { grid-template-columns: repeat(2,1fr); }
-  .process-step:nth-child(2) { border-right: 0; }
-  .process-step:nth-child(3), .process-step:nth-child(4) { border-top: 0; }
-  .process-step:nth-child(3) { padding-left: 0; }
-  .about { grid-template-columns: 1fr; }
-  .about-image { min-height: 0; padding: 34px 34px 0; }
-  .about-image-frame { width: min(72%, 430px); }
-  .about-copy { padding: 80px 42px; }
-  .contact-copy { position: static; }
-  .site-footer nav { flex-wrap: wrap; justify-content: flex-end; }
-}
-
-@media (max-width: 620px) {
-  :root { --header-h: 66px; }
-  body { padding-bottom: 58px; }
-  .container, .nav-shell { width: calc(100% - 56px); }
-  .site-header.scrolled .nav-shell { height: 60px; }
-  .site-header.scrolled .mobile-menu { inset-block-start: 60px; }
-  .wordmark-logo { height: 30px; }
-  .hero { min-height: 540px; height: 540px; }
-  .hero-content { justify-content: flex-start; padding-top: 158px; padding-bottom: 26px; }
-  .hero-kicker { top: 105px; font-size: 9px; }
-  .hero-title { font-size: clamp(2rem, 10vw, 3.35rem); line-height: .92; letter-spacing: -.052em; margin-bottom: 18px; width: 100%; }
-  .hero-line { white-space: nowrap; }
-  .hero-orange { font-size: .86em; }
-  .hero-bottom { padding-top: 16px; }
-  .hero-bottom p { font-size: .95rem; max-width: 30rem; }
-  .hero-actions { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
-  .button { padding-inline: 14px; }
-  .hero-foot { display: grid; gap: 8px; font-size: 8px; margin-top: 10px; }
-  .capability-item { min-height: 108px; padding: 16px 14px; gap: 10px; }
-  .intro, .experience, .quote-process, .contact { padding-block: 82px; }
-  .services { padding-bottom: 88px; }
-  .section-heading h2, .section-topline h2, .positioning h2, .experience h2, .pricing-title h2, .about h2, .coverage h2, .contact h2 { letter-spacing: -.045em; }
-  .services-grid { grid-template-columns: 1fr; }
-  .service, .service:nth-child(odd), .service:nth-child(even) { min-height: auto; padding: 28px 0 34px; border-right: 0; }
-  .service-number { margin-bottom: 30px; }
-  .positioning { padding: 88px 0 92px; }
-  .positioning-inner { text-align: left; }
-  .positioning-inner p { margin-inline: 0; }
-  .experience-image { width: 100%; aspect-ratio: 4 / 3; }
-  .project-list { padding-top: 0; }
-  .project-row { grid-template-columns: 44px 1fr; min-height: 58px; }
-  .pricing-section { padding: 78px 0; }
-  .process-grid { grid-template-columns: 1fr; }
-  .process-step, .process-step + .process-step, .process-step:nth-child(3) { min-height: auto; padding: 30px 0 34px; border-right: 0; border-top: 1px solid var(--line); }
-  .process-step > span { margin-bottom: 30px; }
-  .about-image { min-height: 0; padding: 26px 22px 0; }
-  .about-image-frame { width: min(86%, 360px); }
-  .about-copy { padding: 72px 28px 80px; }
-  .coverage { padding-block: 84px; }
-  .coverage-areas { grid-template-columns: 1fr; }
-  .coverage-areas span:nth-child(even) { padding-left: 0; border-left: 0; }
-  .form-row { grid-template-columns: 1fr; gap: 0; }
-  .quote-form { padding: 24px 18px; }
-  .footer-grid { grid-template-columns: 1fr; grid-template-areas: "brand" "contact" "nav" "copy"; }
-  .site-footer nav {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, auto));
-    justify-content: space-between;
-    gap: 6px;
-    margin-top: 12px;
-  }
-  .site-footer nav a { font-size: 7.5px; letter-spacing: 0; white-space: nowrap; }
-  .mobile-action-bar {
-    position: fixed; z-index: 1200; inset: auto 0 0; height: 58px; display: grid; grid-template-columns: 1fr 1fr 1.15fr;
-    background: #0b0b0b; border-top: 1px solid rgba(255,255,255,.12); color: #fff;
-  }
-  .mobile-action-bar a { display: flex; align-items: center; justify-content: center; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; border-right: 1px solid rgba(255,255,255,.12); }
-  .mobile-action-bar a:last-child { background: var(--orange); border-right: 0; font-weight: 800; }
-}
-
-.capability-item span { display: none; }
-
-/* Final tablet/mobile alignment pass */
-@media (max-width: 880px) {
-  .hero-content,
-  .hero-bottom,
-  .hero-foot,
-  .intro-grid,
-  .section-topline,
-  .experience-intro,
-  .pricing-grid,
-  .about-copy,
-  .coverage-copy,
-  .contact-copy {
-    text-align: center;
-  }
-
-  .hero-title,
-  .section-heading h2,
-  .section-topline h2,
-  .intro-copy,
-  .experience-intro > p,
-  .pricing-copy p,
-  .about-copy p,
-  .coverage-copy > p,
-  .contact-copy > p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .hero-actions,
-  .contact-actions {
-    justify-content: center;
-  }
-
-  .hero-foot {
-    justify-content: center;
-  }
-
-  .capability-item {
-    justify-items: center;
-    text-align: center;
-  }
-
-  .experience-image {
-    width: min(100%, 620px);
-    aspect-ratio: 16 / 10;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .pricing-note {
-    display: inline-block;
-    text-align: left;
-  }
-
-  .service,
-  .project-list,
-  .process-step,
-  .faq,
-  .quote-form {
-    text-align: left;
-  }
-}
-
-@media (max-width: 620px) {
-  .hero-actions {
-    justify-content: center;
-  }
-
-  .positioning-inner {
-    text-align: center;
-  }
-
-  .positioning-inner p {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .experience-image {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-  }
-}
-
-
-@media (max-width: 880px) {
-  .wordmark-logo { height: 32px; }
-  .footer-wordmark .wordmark-logo { height: 34px; }
-}
-
-@media (max-width: 620px) {
-  .wordmark-logo { height: 26px; }
-  .footer-wordmark .wordmark-logo { height: 28px; }
-}
-
-/* General mobile left-aligned blocks */
-
-@media (max-width: 620px) {
-  .service p,
-  .project-row strong,
-  .process-step p,
-  .faq summary,
-  .faq details p,
-  .coverage-copy > p,
-  .contact-copy > p {
-    max-width: 100%;
-  }
-  .quote-form { padding-left: 22px; padding-right: 22px; }
-  .project-row { padding-left: 2px; padding-right: 2px; }
-  .site-footer { padding-left: 0; padding-right: 0; }
-}
-
-/* === QA STABILISATION PASS 2026-09-06 === */
-
-/* Prevent stray horizontal movement and keep top overscroll visually dark. */
-html, body {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: clip;
-  overscroll-behavior-x: none;
-  overscroll-behavior-y: none;
-}
-
-/* Consistent content gutters. */
-.container,
-.nav-shell {
-  width: min(calc(100% - 96px), var(--max));
-}
-
-/* The carousel clone must never appear in the desktop five-column strip. */
-.capability-clone {
-  display: none;
-}
-
-/* Keep the desktop strip compact and perfectly centred. */
-.capability-item {
-  min-height: 118px;
-  padding: 20px 16px;
-}
-.capability-item strong {
-  max-width: 165px;
-}
-
-/* About section: true 50/50 split, with the portrait framed rather than stretched. */
-.about {
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: stretch;
-}
-.about-image {
-  min-height: 0;
-  padding: clamp(46px, 5vw, 72px);
-  align-items: center;
-  justify-content: center;
-}
-.about-image-frame {
-  width: min(72%, 450px);
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: #d8d3ca;
-}
-.about-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 5%;
-}
-.about-copy {
-  padding: clamp(72px, 6vw, 104px);
-}
-
-/* Tablet and smaller: two cards at a time, with no stacked trust-strip layout. */
-@media (max-width: 1100px) {
-  .container,
-  .nav-shell {
-    width: min(calc(100% - 72px), var(--max));
-  }
-
-  .capability-rail {
-    overflow: hidden;
-  }
-  .capability-rail > .container {
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
-  .capability-grid {
-    display: flex;
-    width: 100%;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-  }
-  .capability-grid::-webkit-scrollbar {
-    display: none;
-  }
-  .capability-item,
-  .capability-item:nth-child(5),
-  .capability-item:last-child {
-    display: grid;
-    flex: 0 0 50%;
-    min-width: 50%;
-    min-height: 116px;
-    grid-column: auto;
-    scroll-snap-align: start;
-    border-left: 0;
-    border-right: 1px solid var(--line-dark);
-  }
-  .capability-clone {
-    display: grid;
-  }
-  .capability-item strong {
-    max-width: 150px;
-  }
-}
-
-@media (max-width: 880px) {
-  /* Reduce tablet whitespace without compressing the content. */
-  .intro {
-    padding: 82px 0 76px;
-  }
-  .services {
-    padding-bottom: 82px;
-  }
-  .experience,
-  .quote-process,
-  .contact {
-    padding-block: 82px;
-  }
-
-  .about {
-    grid-template-columns: 1fr;
-  }
-  .about-image {
-    padding: 44px 36px 0;
-  }
-  .about-image-frame {
-    width: min(58%, 400px);
-    aspect-ratio: 4 / 5;
-  }
-  .about-copy {
-    padding: 64px 42px 78px;
-  }
-}
-
-@media (max-width: 620px) {
-  /* A slightly wider gutter than before so no copy hugs either edge. */
-  .container,
-  .nav-shell {
-    width: calc(100% - 64px);
-  }
-
-  /* Compact mobile hero with the copy securely inside the image. */
-  .hero {
-    min-height: 500px;
-    height: 500px;
-    max-height: none;
-  }
-  .hero-media {
-    background-position: 42% center;
-    transform: scale(1.02);
-  }
-  .hero-content {
-    height: 100%;
-    justify-content: flex-start;
-    padding-top: 118px;
-    padding-bottom: 22px;
-  }
-  .hero-title {
-    width: 100%;
-    margin-bottom: 17px;
-    font-size: clamp(1.95rem, 9.8vw, 3.15rem);
-    line-height: .92;
-  }
-  .hero-orange {
-    font-size: .88em;
-  }
-  .hero-bottom {
-    gap: 14px;
-    padding-top: 15px;
-  }
-  .hero-bottom p {
-    max-width: 29rem;
-    font-size: .92rem;
-    line-height: 1.45;
-  }
-  .hero-actions {
-    gap: 10px;
-  }
-  .button {
-    min-height: 44px;
-    padding-inline: 10px;
-    font-size: 9px;
-  }
-  .hero-foot {
-    margin-top: 10px;
-    gap: 5px;
-    font-size: 7px;
-    line-height: 1.25;
-  }
-
-  /* Keep every content block comfortably inset. */
-  .intro,
-  .experience,
-  .quote-process,
-  .contact {
-    padding-block: 68px;
-  }
-  .services {
-    padding-bottom: 72px;
-  }
-  .positioning {
-    padding: 76px 0 80px;
-  }
-  .pricing-section {
-    padding: 68px 0;
-  }
-  .coverage {
-    padding-block: 74px;
-  }
-
-  .service,
-  .service:nth-child(odd),
-  .service:nth-child(even) {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .service p,
-  .process-step p,
-  .project-row strong,
-  .coverage-copy > p,
-  .contact-copy > p {
-    max-width: 100%;
-  }
-
-  .quote-form {
-    padding: 24px 20px;
-  }
-
-  /* Portrait remains portrait and does not stretch on mobile. */
-  .about-image {
-    padding: 30px 32px 0;
-  }
-  .about-image-frame {
-    width: min(78%, 330px);
-    aspect-ratio: 4 / 5;
-  }
-  .about-copy {
-    padding: 54px 32px 68px;
-  }
-
-  /* Footer navigation stays on one line without becoming illegible. */
-  .site-footer nav {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 2px;
-    align-items: center;
-  }
-  .site-footer nav a {
-    min-width: 0;
-    padding: 6px 1px;
-    font-size: 7.2px;
-    line-height: 1.1;
-    text-align: center;
-    white-space: nowrap;
-  }
-}
-
-@media (max-width: 380px) {
-  .container,
-  .nav-shell {
-    width: calc(100% - 56px);
-  }
-  .hero {
-    min-height: 480px;
-    height: 480px;
-  }
-  .hero-content {
-    padding-top: 108px;
-  }
-  .hero-title {
-    font-size: clamp(1.8rem, 9.6vw, 2.75rem);
-  }
-  .hero-bottom p {
-    font-size: .88rem;
-  }
-  .about-image-frame {
-    width: min(84%, 300px);
-  }
-}
-
-
-/* === TRUST TICKER + FINAL RESPONSIVE QA PASS 2026-09-06 === */
-
-/* Continuous, seamless trust strip on every viewport. */
+/* Continuous trust ticker */
 .capability-rail {
   position: relative;
   z-index: 10;
@@ -933,35 +341,39 @@ html, body {
 .capability-ticker {
   width: 100%;
   overflow: hidden;
+  touch-action: pan-y;
 }
 .capability-track {
   display: flex;
   width: max-content;
+  animation: trustTicker 36s linear infinite;
   will-change: transform;
-  animation: trustTicker 28s linear infinite;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  pointer-events: none;
 }
-.capability-set {
-  display: flex;
-  flex: none;
-}
+.capability-track.is-paused { animation-play-state: paused; }
+.capability-set { display: flex; flex: none; }
 .capability-item,
 .capability-item:nth-child(5),
 .capability-item:last-child {
   display: grid;
-  flex: 0 0 20vw;
-  width: 20vw;
-  min-width: 20vw;
+  flex: 0 0 18vw;
+  width: 18vw;
+  min-width: 18vw;
   min-height: 118px;
   padding: 20px 16px;
   align-content: center;
   justify-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 11px;
   border-left: 0;
   border-right: 1px solid var(--line-dark);
   overflow: hidden;
-  scroll-snap-align: none;
 }
+.capability-item::after { display: none; }
+.capability-icon { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; }
+.capability-icon img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .capability-item strong {
   width: 100%;
   max-width: 170px;
@@ -973,695 +385,366 @@ html, body {
   color: #fff;
   text-align: center;
 }
-.capability-icon {
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.capability-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
 @keyframes trustTicker {
   from { transform: translate3d(0,0,0); }
   to { transform: translate3d(-50%,0,0); }
 }
 
-/* Make the trust strip part of the first viewport on tablet/iPad sizes. */
-@media (min-width: 621px) and (max-width: 1100px) {
+/* Mid-size desktop / tablet landscape */
+@media (max-width: 1100px) {
+  :root { --header-h: 74px; }
+  .container, .nav-shell { width: min(calc(100% - 64px), var(--max)); }
+  .desktop-nav { gap: 18px; }
+
   .hero {
-    height: calc(100svh - 118px);
-    min-height: 620px;
+    height: 100svh;
+    min-height: 100svh;
     max-height: none;
   }
-  .capability-item,
-  .capability-item:nth-child(5),
-  .capability-item:last-child {
-    flex-basis: 50vw;
-    width: 50vw;
-    min-width: 50vw;
-  }
-}
-
-/* Mobile still shows exactly two trust items while the track moves continuously. */
-@media (max-width: 620px) {
-  .capability-item,
-  .capability-item:nth-child(5),
-  .capability-item:last-child {
-    flex-basis: 50vw;
-    width: 50vw;
-    min-width: 50vw;
-    min-height: 104px;
-    padding: 15px 10px;
-    gap: 9px;
-  }
-  .capability-icon { width: 23px; height: 23px; }
-  .capability-item strong {
-    max-width: 135px;
-    font-size: .86rem;
-    line-height: 1.16;
-  }
-}
-
-/* Small visual refinements found in the cross-device QA exports. */
-@media (max-width: 880px) {
-  .service p,
-  .process-step p,
-  .project-row strong,
-  .intro-copy p,
-  .about-copy p,
-  .coverage-copy > p,
-  .contact-copy > p {
-    line-height: 1.62;
-  }
-  .about-image-frame {
-    width: min(68%, 410px);
-  }
-}
-
-@media (max-width: 620px) {
-  .section-heading h2,
-  .section-topline h2,
-  .experience-intro h2,
-  .about-copy h2,
-  .coverage h2,
-  .contact-copy h2 {
-    text-wrap: balance;
-  }
-  .intro-copy,
-  .service,
-  .project-list,
-  .process-step,
-  .about-copy,
-  .faq,
-  .quote-form {
-    min-width: 0;
-  }
-  .about-image-frame {
-    width: min(84%, 340px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .capability-track {
-    animation: none;
-    transform: none;
-  }
-  .capability-set[aria-hidden="true"] { display: none; }
-}
-
-
-/* === FINAL RESPONSIVE STABILITY PASS 2026-09-06 === */
-
-/* The hero, and only the hero, owns the first viewport on every device. */
-.hero {
-  height: 100svh !important;
-  min-height: 100svh !important;
-  max-height: none !important;
-}
-
-/* Keep the background image static while the page scrolls. This is much smoother on touch devices. */
-.hero-media {
-  transform: none !important;
-  will-change: auto !important;
-}
-
-/* Slower, continuous trust ticker. */
-.capability-track {
-  animation-duration: 36s !important;
-  animation-timing-function: linear !important;
-  animation-iteration-count: infinite !important;
-}
-
-/* Keep heading glyphs clear of section edges in stitched/full-page captures. */
-.coverage h2,
-.contact h2,
-.about h2,
-.experience h2 {
-  overflow: visible;
-  padding-top: .035em;
-}
-
-/* Slightly improve portrait scale without losing the beige framing. */
-.about-image-frame {
-  width: min(78%, 480px);
-}
-
-/* Tablet / iPad: centre the two hero lines on the same axis and guarantee neither can clip. */
-@media (min-width: 621px) and (max-width: 1100px) {
-  .hero-content {
-    justify-content: flex-end !important;
-    padding-top: calc(var(--header-h) + 42px) !important;
-    padding-bottom: clamp(52px, 7vh, 82px) !important;
-    text-align: center;
-  }
-
-  .hero-title {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 auto 26px !important;
-    padding: 0 !important;
-    font-size: clamp(3.45rem, 8vw, 5rem) !important;
-    line-height: .92 !important;
-    letter-spacing: -.052em !important;
-    text-align: center !important;
-  }
-
-  .hero-line {
-    display: block;
-    width: 100%;
-    white-space: nowrap !important;
-    text-align: center !important;
-  }
-
-  .hero-orange {
-    font-size: .94em !important;
-  }
-
-  .hero-bottom {
-    width: min(100%, 780px);
-    margin-inline: auto;
-    grid-template-columns: 1fr !important;
-    gap: 20px !important;
-    text-align: center;
-  }
-
-  .hero-bottom p {
-    margin-inline: auto;
-    max-width: 680px;
-  }
-
-  .hero-actions,
-  .hero-foot {
-    justify-content: center !important;
-  }
-
-  .hero-foot {
-    text-align: center;
-  }
-
-  /* Don't resize the fixed nav when it crosses the scroll threshold. */
-  .site-header.scrolled .nav-shell {
-    height: var(--header-h) !important;
-  }
-  .site-header.scrolled {
-    background: rgba(10,10,10,.96);
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  /* Opacity-only reveals are smoother than moving every block on touch screens. */
-  .reveal {
-    transform: none !important;
-    transition: opacity .42s ease !important;
-  }
-
-  .about-image-frame {
-    width: min(74%, 430px);
-  }
-}
-
-/* Mobile: a full first viewport, but with the content compact enough that it never overflows. */
-@media (max-width: 620px) {
-  .hero-content {
-    justify-content: flex-end !important;
-    padding-top: calc(var(--header-h) + 28px) !important;
-    padding-bottom: clamp(42px, 7svh, 62px) !important;
-    text-align: center;
-  }
-
-  .hero-title {
-    width: 100% !important;
-    max-width: none !important;
-    margin: 0 auto 17px !important;
-    padding: 0 !important;
-    font-size: clamp(2rem, 9.5vw, 3.05rem) !important;
-    line-height: .93 !important;
-    letter-spacing: -.05em !important;
-  }
-
-  .hero-line {
-    width: 100%;
-    white-space: nowrap !important;
-    text-align: center !important;
-  }
-
-  .hero-orange {
-    font-size: .86em !important;
-  }
-
-  .hero-bottom {
-    gap: 13px !important;
-    padding-top: 15px !important;
-  }
-
-  .hero-bottom p {
-    max-width: 31rem !important;
-    margin-inline: auto !important;
-    font-size: .92rem !important;
-    line-height: 1.42 !important;
-  }
-
-  .hero-actions {
-    justify-content: center !important;
-  }
-
-  .hero-foot {
-    margin-top: 10px !important;
-    justify-content: center !important;
-    text-align: center !important;
-  }
-
-  .site-header.scrolled .nav-shell {
-    height: var(--header-h) !important;
-  }
-  .site-header.scrolled {
-    background: rgba(10,10,10,.97);
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-  }
-
-  .reveal {
-    transform: none !important;
-    transition: opacity .38s ease !important;
-  }
-
-  /* Slightly larger portrait than the previous pass; still framed by beige. */
-  .about-image-frame {
-    width: min(88%, 360px);
-  }
-
-  /* Keep small body copy readable, especially in service/process cards. */
-  .service p,
-  .process-step p,
-  .project-row strong,
-  .intro-copy p,
-  .about-copy p,
-  .coverage-copy > p,
-  .faq details p,
-  .contact-copy > p {
-    font-size: max(.88rem, 13px);
-  }
-}
-
-/* Extra guard for the narrowest phones. */
-@media (max-width: 360px) {
-  .hero-title {
-    font-size: clamp(1.85rem, 9.1vw, 2.5rem) !important;
-  }
-  .hero-bottom p {
-    font-size: .87rem !important;
-  }
-  .button {
-    min-height: 42px;
-    font-size: 8.5px;
-  }
-}
-
-/* === MOBILE + TABLET COMPOSITION PASS 2026-09-06 === */
-
-/* The ticker is decorative. Keeping it out of the touch hit-testing path makes vertical scrolling smoother. */
-.capability-ticker,
-.capability-track {
-  touch-action: pan-y;
-}
-.capability-track {
-  pointer-events: none;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-}
-
-/* Tablet: treat the hero as a portrait composition rather than a cropped desktop banner. */
-@media (min-width: 621px) and (max-width: 1100px) {
   .hero-media {
     background-image: url("assets/hero-cape-town-tablet.jpg");
-    background-position: center center !important;
-    background-size: cover;
+    background-position: center center;
+    transform: none;
+    will-change: auto;
   }
-
   .hero-shade {
     background:
-      linear-gradient(180deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.14) 30%, rgba(5,5,5,.34) 54%, rgba(5,5,5,.72) 100%),
-      linear-gradient(90deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.08) 52%, rgba(5,5,5,.08) 100%);
+      linear-gradient(180deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.14) 29%, rgba(5,5,5,.34) 55%, rgba(5,5,5,.74) 100%),
+      linear-gradient(90deg, rgba(5,5,5,.17) 0%, rgba(5,5,5,.07) 55%, rgba(5,5,5,.08) 100%);
   }
-
   .hero-content {
-    justify-content: center !important;
-    padding-top: calc(var(--header-h) + 92px) !important;
-    padding-bottom: 46px !important;
-    transform: translateY(6vh);
+    justify-content: flex-start;
+    padding-top: clamp(240px, 34vh, 380px);
+    padding-bottom: 64px;
+    text-align: center;
   }
-
   .hero-title {
-    max-width: 900px !important;
-    font-size: clamp(3.8rem, 8.5vw, 5.6rem) !important;
-    line-height: .91 !important;
-    margin-bottom: 30px !important;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto 28px;
+    padding: 0;
+    font-size: clamp(4.8rem, 10.6vw, 6.6rem);
+    line-height: .9;
+    letter-spacing: -.058em;
+    text-align: center;
   }
-
-  .hero-orange {
-    font-size: .92em !important;
-  }
-
+  .hero-line { width: 100%; text-align: center; white-space: nowrap; }
+  .hero-orange { font-size: .9em; }
   .hero-bottom {
-    width: min(100%, 760px) !important;
-    gap: 24px !important;
-    padding-top: 26px !important;
+    width: min(100%, 790px);
+    max-width: 790px;
+    margin-inline: auto;
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding-top: 24px;
+    text-align: center;
   }
+  .hero-bottom p { max-width: 690px; margin-inline: auto; font-size: 1.12rem; line-height: 1.52; }
+  .hero-actions, .hero-foot { justify-content: center; }
+  .hero-foot { margin-top: 16px; font-size: 8.8px; text-align: center; }
 
-  .hero-bottom p {
-    max-width: 650px !important;
-    font-size: 1.06rem !important;
-    line-height: 1.55 !important;
+  .capability-item,
+  .capability-item:nth-child(5),
+  .capability-item:last-child {
+    flex-basis: 50vw;
+    width: 50vw;
+    min-width: 50vw;
   }
+  .capability-icon { width: 30px; height: 30px; }
+  .capability-item strong { font-size: .98rem; }
 
-  .hero-actions {
-    gap: 14px !important;
-  }
-
-  .hero-foot {
-    margin-top: 18px !important;
-    gap: 20px !important;
-    font-size: 8.5px !important;
-  }
-
-  /* iPad and small laptops get genuine tablet layouts rather than squeezed desktop grids. */
-  .services-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
+  .services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .service,
   .service:nth-child(3n+2),
   .service:nth-child(3n+3),
   .service:nth-child(odd),
   .service:nth-child(even) {
-    padding: 34px 30px 40px !important;
-    border-right: 1px solid var(--line) !important;
+    min-height: 250px;
+    padding: 34px 30px 40px;
+    border-right: 1px solid var(--line);
   }
-  .service:nth-child(even) {
-    border-right: 0 !important;
-  }
-  .service h3 {
-    font-size: 1.35rem !important;
-  }
-  .service p {
-    font-size: .98rem !important;
-    line-height: 1.65 !important;
-  }
+  .service:nth-child(even) { border-right: 0; }
+  .service h3 { font-size: 1.35rem; }
+  .service p { font-size: .98rem; line-height: 1.65; }
 
-  .process-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
+  .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .process-step,
   .process-step + .process-step,
   .process-step:nth-child(3) {
-    min-height: 220px !important;
-    padding: 32px 30px 34px !important;
-    border-top: 1px solid var(--line) !important;
-    border-right: 1px solid var(--line) !important;
+    min-height: 220px;
+    padding: 32px 30px 34px;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
   }
-  .process-step:nth-child(even) {
-    border-right: 0 !important;
-  }
-  .process-step > span {
-    margin-bottom: 34px !important;
-  }
-  .process-step p {
-    max-width: 310px !important;
-    font-size: .96rem !important;
-  }
+  .process-step:nth-child(even) { border-right: 0; }
+  .process-step > span { margin-bottom: 30px; font-size: 12px; font-weight: 850; }
+  .process-step p { max-width: 310px; font-size: .96rem; line-height: 1.65; }
 
-  /* Keep headings centred, but long prose reads more naturally left aligned. */
-  .intro-grid,
-  .about-copy,
-  .coverage-copy,
-  .contact-copy {
-    text-align: center;
+  .about-image-frame { width: min(78%, 460px); }
+}
+
+/* Tablet portrait and smaller */
+@media (max-width: 880px) {
+  .site-header { transition: background .18s ease, border-color .18s ease; }
+  .site-header.scrolled {
+    background: rgba(10,10,10,.97);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
+  .site-header.scrolled .nav-shell { height: var(--header-h); }
+
+  .desktop-nav, .nav-cta { display: none; }
+  .nav-shell { grid-template-columns: 1fr auto; }
+  .menu-toggle {
+    justify-self: end;
+    display: grid;
+    gap: 6px;
+    width: 42px;
+    height: 42px;
+    place-content: center;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+  }
+  .menu-toggle span { width: 22px; height: 1px; background: currentColor; transition: transform .2s ease; }
+  .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(3.5px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-3.5px) rotate(-45deg); }
+  .mobile-menu {
+    display: flex;
+    position: fixed;
+    inset: var(--header-h) 0 auto;
+    height: 0;
+    overflow: hidden;
+    background: rgba(10,10,10,.99);
+    color: #fff;
+    flex-direction: column;
+    opacity: 0;
+    transition: height .28s ease, opacity .2s ease;
+    border-top: 1px solid rgba(255,255,255,.1);
+  }
+  .mobile-menu.open { height: calc(100dvh - var(--header-h)); opacity: 1; padding: 28px 32px 100px; }
+  .mobile-menu a { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 1.35rem; font-weight: 650; }
+
+  .intro-grid, .experience-grid, .pricing-grid, .coverage-grid, .contact-grid { grid-template-columns: 1fr; gap: 52px; }
+  .intro { padding: 92px 0 82px; }
+  .intro-copy { padding-top: 0; max-width: 680px; margin-inline: auto; }
+  .section-topline { grid-template-columns: 1fr; gap: 22px; margin-bottom: 52px; text-align: center; }
+  .section-topline h2 { margin-inline: auto; }
+  .section-heading, .experience-intro, .pricing-title, .about-copy, .coverage-copy, .contact-copy { text-align: center; }
+
+  /* Centre short statements, but keep longer prose readable. */
   .intro-copy,
   .about-copy p,
   .coverage-copy > p,
-  .contact-copy > p {
-    text-align: left;
-  }
-  .intro-copy {
-    max-width: 680px;
-    margin-inline: auto;
-  }
+  .contact-copy > p { text-align: left; }
   .about-copy p,
   .coverage-copy > p,
-  .contact-copy > p {
-    max-width: 650px;
-  }
+  .contact-copy > p { max-width: 650px; margin-left: auto; margin-right: auto; }
 
-  .capability-item strong {
-    font-size: .98rem !important;
-  }
-  .capability-icon {
-    width: 30px !important;
-    height: 30px !important;
-  }
+  .experience-image { width: min(100%, 620px); aspect-ratio: 16 / 10; margin-left: auto; margin-right: auto; }
+  .project-list { padding-top: 0; }
+
+  .pricing-copy p { margin-left: auto; margin-right: auto; }
+  .pricing-note { display: inline-block; text-align: left; }
+
+  .about { grid-template-columns: 1fr; }
+  .about-image { min-height: 0; padding: 34px 34px 0; }
+  .about-image-frame { width: min(82%, 460px); }
+  .about-copy { padding: 76px 42px 84px; }
+
+  .contact-copy { position: static; }
+
+  /* Touch scroll performance: opacity only, no translate/reflow animation. */
+  .reveal { transform: none; transition: opacity .34s ease; }
+  .button:hover, .nav-cta:hover { transform: none; }
+  .experience-image:hover img, .about-image:hover img { transform: none; }
 }
 
-/* Mobile: deliberately compose the hero around the message, not around empty sky. */
+/* Phones */
 @media (max-width: 620px) {
+  :root { --header-h: 66px; }
+  body { padding-bottom: 58px; }
+  .container:not(.hero-content), .nav-shell { width: calc(100% - 64px); }
+  .wordmark-logo { height: 26px; }
+
   .hero-media {
     background-image: url("assets/hero-cape-town-mobile.jpg");
-    background-position: center center !important;
-    background-size: cover;
+    background-position: center center;
   }
-
   .hero-shade {
     background:
-      linear-gradient(180deg, rgba(5,5,5,.18) 0%, rgba(5,5,5,.13) 28%, rgba(5,5,5,.30) 50%, rgba(5,5,5,.76) 100%),
+      linear-gradient(180deg, rgba(5,5,5,.17) 0%, rgba(5,5,5,.12) 29%, rgba(5,5,5,.30) 52%, rgba(5,5,5,.77) 100%),
       linear-gradient(90deg, rgba(5,5,5,.12) 0%, rgba(5,5,5,.04) 55%, rgba(5,5,5,.10) 100%);
   }
-
-  /* Slightly wider hero canvas than the body gutters gives the headline room without crowding body copy elsewhere. */
   .hero-content.container {
-    width: calc(100% - 34px) !important;
-    justify-content: center !important;
-    padding-top: calc(var(--header-h) + 84px) !important;
-    padding-bottom: 34px !important;
-    transform: translateY(5vh);
+    width: calc(100% - 34px);
+    justify-content: flex-start;
+    padding-top: clamp(230px, 36vh, 330px);
+    padding-bottom: 82px;
+    text-align: center;
   }
-
   .hero-title {
-    max-width: 100% !important;
-    font-size: clamp(2.45rem, 11.2vw, 3.5rem) !important;
-    line-height: .91 !important;
-    margin-bottom: 22px !important;
-    letter-spacing: -.055em !important;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    padding: 0;
+    font-size: clamp(2.9rem, 12.8vw, 3.8rem);
+    line-height: .9;
+    letter-spacing: -.058em;
   }
-
-  .hero-orange {
-    font-size: .88em !important;
-  }
-
+  .hero-orange { font-size: .9em; }
   .hero-bottom {
-    width: 100% !important;
-    max-width: 440px;
+    width: min(100%, 430px);
+    max-width: 430px;
     margin-inline: auto;
-    gap: 16px !important;
-    padding-top: 20px !important;
+    grid-template-columns: 1fr;
+    padding-top: 18px;
+    gap: 15px;
+  }
+  .hero-bottom p { max-width: 390px; margin-inline: auto; font-size: 1.02rem; line-height: 1.5; }
+  .hero-actions { width: min(100%, 390px); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .button { min-height: 48px; padding-inline: 12px; font-size: 9.5px; }
+  .hero-foot { margin-top: 12px; display: grid; gap: 6px; font-size: 7.6px; }
+
+  .capability-item,
+  .capability-item:nth-child(5),
+  .capability-item:last-child {
+    flex-basis: 50vw;
+    width: 50vw;
+    min-width: 50vw;
+    min-height: 102px;
+    padding: 14px 10px;
+    gap: 8px;
+  }
+  .capability-icon { width: 25px; height: 25px; }
+  .capability-item strong { max-width: 140px; font-size: .9rem; line-height: 1.16; }
+
+  .intro, .experience, .quote-process, .contact { padding-block: 76px; }
+  .services { padding-bottom: 78px; }
+  .section-heading h2, .section-topline h2, .positioning h2, .experience h2, .pricing-title h2, .about h2, .coverage h2, .contact h2 {
+    letter-spacing: -.045em;
+    text-wrap: balance;
   }
 
-  .hero-bottom p {
-    max-width: 360px !important;
-    font-size: .99rem !important;
-    line-height: 1.5 !important;
+  .services-grid { grid-template-columns: 1fr; }
+  .service,
+  .service:nth-child(3n+2),
+  .service:nth-child(3n+3),
+  .service:nth-child(odd),
+  .service:nth-child(even) {
+    min-height: auto;
+    padding: 24px 0 28px;
+    border-right: 0;
   }
+  .service-number { margin-bottom: 24px; }
+  .service h3 { font-size: 1.08rem; }
+  .service p { font-size: .91rem; line-height: 1.62; }
 
-  .hero-actions {
-    width: min(100%, 360px) !important;
-    margin-inline: auto;
-    gap: 10px !important;
-  }
+  .positioning { padding: 82px 0 86px; }
+  .positioning-inner { text-align: center; }
+  .positioning-inner p { margin-left: auto; margin-right: auto; font-size: .93rem; line-height: 1.62; }
 
-  .button {
-    min-height: 46px !important;
-    font-size: 9.25px !important;
-  }
+  .experience-image { width: 100%; aspect-ratio: 4 / 3; }
+  .project-row { grid-template-columns: 42px 1fr; min-height: 58px; }
+  .project-row strong { font-size: .91rem; line-height: 1.4; }
 
-  .hero-foot {
-    margin-top: 14px !important;
-    gap: 6px !important;
-    font-size: 7.3px !important;
-  }
+  .pricing-section { padding: 72px 0 76px; }
+  .pricing-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+  .pricing-copy { padding-top: 0; }
+  .pricing-copy p { font-size: .95rem; line-height: 1.65; }
+  .pricing-note { margin-top: 20px !important; }
 
-  /* Body copy remains comfortably inset even though the hero itself gets a wider canvas. */
-  .container:not(.hero-content),
-  .nav-shell {
-    width: calc(100% - 64px) !important;
+  /* Keep the process compact but readable at 2x2. */
+  .process-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .process-step,
+  .process-step + .process-step,
+  .process-step:nth-child(3) {
+    min-height: 176px;
+    padding: 26px 18px 28px;
+    border-top: 1px solid var(--line);
+    border-right: 1px solid var(--line);
   }
+  .process-step:nth-child(even) { border-right: 0; }
+  .process-step > span { margin-bottom: 22px; font-size: 12px; font-weight: 850; opacity: 1; }
+  .process-step h3 { font-size: 1.05rem; }
+  .process-step p { max-width: none; font-size: .9rem; line-height: 1.6; }
 
-  /* Stronger mobile readability. */
-  .service h3,
-  .process-step h3 {
-    font-size: 1.08rem !important;
-  }
-  .service p,
-  .process-step p,
-  .intro-copy p,
-  .about-copy p,
-  .coverage-copy > p,
-  .faq details p,
-  .contact-copy > p {
-    font-size: .93rem !important;
-    line-height: 1.67 !important;
-  }
+  .about-image { min-height: 0; padding: 24px 22px 0; }
+  .about-image-frame { width: min(94%, 380px); }
+  .about-copy { padding: 62px 28px 72px; }
+  .about-copy p { font-size: .92rem; line-height: 1.64; }
 
-  /* Centre short headings, left-align paragraphs. */
-  .intro-copy,
-  .about-copy p,
-  .coverage-copy > p,
-  .contact-copy > p {
-    text-align: left !important;
-  }
-  .intro-copy,
-  .about-copy p,
-  .coverage-copy > p,
-  .contact-copy > p {
-    max-width: 100% !important;
-  }
+  /* Give the long coverage heading a little more usable width. */
+  .coverage { padding-block: 78px; }
+  .coverage .container { width: calc(100% - 48px); }
+  .coverage-areas { grid-template-columns: 1fr 1fr; margin: 34px 0 28px; }
+  .coverage-areas span { padding: 13px 0; font-size: 9.5px; }
+  .coverage-areas span:nth-child(even) { padding-left: 14px; border-left: 1px solid var(--line-dark); }
+  .coverage-copy > p { font-size: .91rem; line-height: 1.64; }
+  summary { font-size: .91rem; padding-top: 20px; padding-bottom: 20px; }
+  details p { font-size: .9rem; line-height: 1.62; }
 
-  .capability-icon {
-    width: 25px !important;
-    height: 25px !important;
-  }
-  .capability-item strong {
-    font-size: .9rem !important;
-  }
+  .contact-grid { grid-template-columns: 1fr; gap: 44px; }
+  .contact-copy { text-align: center; }
+  .contact-copy > p { font-size: .92rem; line-height: 1.64; }
+  .contact-actions { justify-content: center; }
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .quote-form { padding: 24px 20px; }
+  .quote-form input, .quote-form select, .quote-form textarea { font-size: 16px; }
 
-  .about-image-frame {
-    width: min(92%, 370px) !important;
+  .site-footer { padding: 42px 0 34px; }
+  .footer-grid { grid-template-columns: 1fr; grid-template-areas: "brand" "contact" "nav" "copy"; }
+  .footer-wordmark .wordmark-logo { height: 28px; }
+  .site-footer nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 3px;
+    margin-top: 10px;
   }
+  .site-footer nav a { min-width: 0; padding: 7px 0; font-size: 8.3px; line-height: 1.1; text-align: center; white-space: nowrap; }
+
+  .mobile-action-bar {
+    position: fixed;
+    z-index: 1200;
+    inset: auto 0 0;
+    height: 58px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.15fr;
+    background: #0b0b0b;
+    border-top: 1px solid rgba(255,255,255,.12);
+    color: #fff;
+    transform: translateZ(0);
+    contain: paint;
+  }
+  .mobile-action-bar a { display: flex; align-items: center; justify-content: center; font-size: 10px; text-transform: uppercase; letter-spacing: .08em; border-right: 1px solid rgba(255,255,255,.12); }
+  .mobile-action-bar a:last-child { background: var(--orange); border-right: 0; font-weight: 800; }
 }
 
 @media (max-width: 380px) {
-  .hero-content.container {
-    width: calc(100% - 28px) !important;
-    transform: translateY(4vh);
-  }
-  .hero-title {
-    font-size: clamp(2.18rem, 10.8vw, 2.85rem) !important;
-  }
-  .hero-bottom p {
-    font-size: .94rem !important;
-  }
+  .container:not(.hero-content), .nav-shell { width: calc(100% - 56px); }
+  .hero-content.container { width: calc(100% - 28px); padding-top: clamp(215px, 34vh, 285px); }
+  .hero-title { font-size: clamp(2.55rem, 12vw, 3.1rem); }
+  .hero-bottom p { font-size: .96rem; }
+  .button { min-height: 44px; font-size: 9px; }
+  .service p, .process-step p, .project-row strong, .about-copy p, .coverage-copy > p, .faq details p, .contact-copy > p { font-size: 14px; }
+  .site-footer nav a { font-size: 7.7px; }
 }
 
-/* === HERO SCALE + POSITION PASS 2026-09-06 === */
-/* Desktop remains untouched. Tablet and mobile use a larger, higher content stack. */
-@media (min-width: 621px) and (max-width: 1100px) {
-  .hero-content {
-    justify-content: flex-start !important;
-    padding-top: clamp(240px, 34vh, 380px) !important;
-    padding-bottom: 64px !important;
-    transform: none !important;
-  }
-
-  .hero-title {
-    width: 100% !important;
-    max-width: 960px !important;
-    margin: 0 auto 28px !important;
-    font-size: clamp(4.8rem, 10.6vw, 6.6rem) !important;
-    line-height: .9 !important;
-    letter-spacing: -.058em !important;
-  }
-
-  .hero-orange {
-    font-size: .9em !important;
-  }
-
-  .hero-bottom {
-    width: min(100%, 790px) !important;
-    max-width: 790px !important;
-    margin-inline: auto !important;
-    padding-top: 24px !important;
-    gap: 22px !important;
-  }
-
-  .hero-bottom p {
-    max-width: 690px !important;
-    font-size: 1.12rem !important;
-    line-height: 1.52 !important;
-  }
-
-  .hero-actions {
-    margin-top: 2px !important;
-  }
-
-  .hero-foot {
-    margin-top: 16px !important;
-    font-size: 8.8px !important;
-  }
+@media (hover: none), (pointer: coarse) {
+  .button:hover, .nav-cta:hover, .experience-image:hover img, .about-image:hover img { transform: none; }
 }
 
-@media (max-width: 620px) {
-  .hero-content.container {
-    justify-content: flex-start !important;
-    padding-top: clamp(230px, 36vh, 330px) !important;
-    padding-bottom: 82px !important;
-    transform: none !important;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
   }
-
-  .hero-title {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 auto 20px !important;
-    font-size: clamp(2.9rem, 12.8vw, 3.8rem) !important;
-    line-height: .9 !important;
-    letter-spacing: -.058em !important;
-  }
-
-  .hero-orange {
-    font-size: .9em !important;
-  }
-
-  .hero-bottom {
-    width: min(100%, 430px) !important;
-    max-width: 430px !important;
-    margin-inline: auto !important;
-    padding-top: 18px !important;
-    gap: 15px !important;
-  }
-
-  .hero-bottom p {
-    max-width: 390px !important;
-    font-size: 1.02rem !important;
-    line-height: 1.5 !important;
-  }
-
-  .hero-actions {
-    width: min(100%, 390px) !important;
-    gap: 10px !important;
-  }
-
-  .button {
-    min-height: 48px !important;
-    font-size: 9.5px !important;
-  }
-
-  .hero-foot {
-    margin-top: 12px !important;
-    font-size: 7.6px !important;
-  }
-}
-
-@media (max-width: 380px) {
-  .hero-content.container {
-    padding-top: clamp(215px, 34vh, 285px) !important;
-  }
-
-  .hero-title {
-    font-size: clamp(2.55rem, 12vw, 3.1rem) !important;
-  }
-
-  .hero-bottom p {
-    font-size: .96rem !important;
-  }
+  .reveal { opacity: 1; transform: none; }
+  .capability-track { animation: none !important; transform: none !important; }
+  .capability-set[aria-hidden="true"] { display: none; }
 }

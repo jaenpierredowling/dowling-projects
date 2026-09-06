@@ -2,10 +2,26 @@
   const header = document.querySelector('.site-header');
   const menuButton = document.querySelector('.menu-toggle');
   const mobileMenu = document.querySelector('.mobile-menu');
-  const heroMedia = document.querySelector('.hero-media');
   const form = document.querySelector('#quote-form');
   const status = document.querySelector('.form-status');
   const submitButton = document.querySelector('.submit-button');
+
+  const trustTrack = document.querySelector('.capability-track');
+  const touchViewport = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 1100px)');
+  let trustResumeTimer;
+
+  const pauseTrustTicker = () => {
+    if (!trustTrack || !touchViewport.matches) return;
+    trustTrack.classList.add('is-paused');
+  };
+
+  const resumeTrustTickerSoon = (delay = 650) => {
+    if (!trustTrack || !touchViewport.matches) return;
+    window.clearTimeout(trustResumeTimer);
+    trustResumeTimer = window.setTimeout(() => {
+      trustTrack.classList.remove('is-paused');
+    }, delay);
+  };
 
   let headerScrolled = null;
   let headerTicking = false;
@@ -25,16 +41,22 @@
       headerTicking = true;
       window.requestAnimationFrame(updateHeader);
     }
+    pauseTrustTicker();
+    resumeTrustTickerSoon();
   }, { passive: true });
 
 
   // Prevent the iOS/Safari rubber-band gesture from pulling the hero down past the top of the page.
   let topTouchStartY = 0;
   document.addEventListener('touchstart', (event) => {
+    pauseTrustTicker();
     if (window.scrollY <= 0 && event.touches?.length) {
       topTouchStartY = event.touches[0].clientY;
     }
   }, { passive: true });
+
+  document.addEventListener('touchend', () => resumeTrustTickerSoon(700), { passive: true });
+  document.addEventListener('touchcancel', () => resumeTrustTickerSoon(700), { passive: true });
 
   document.addEventListener('touchmove', (event) => {
     if (window.scrollY <= 0 && event.touches?.length) {
@@ -76,7 +98,7 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     reveals.forEach((item, index) => {
-      item.style.transitionDelay = `${Math.min(index % 5, 4) * 45}ms`;
+      item.style.transitionDelay = touchViewport.matches ? '0ms' : `${Math.min(index % 5, 4) * 45}ms`;
       observer.observe(item);
     });
   }
