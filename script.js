@@ -7,63 +7,37 @@
   const submitButton = document.querySelector('.submit-button');
 
   const trustTrack = document.querySelector('.capability-track');
+  const trustRail = document.querySelector('.capability-rail');
   const touchViewport = window.matchMedia('(hover: none), (pointer: coarse), (max-width: 1100px)');
-  let trustResumeTimer;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const pauseTrustTicker = () => {
-    if (!trustTrack || !touchViewport.matches) return;
-    trustTrack.classList.add('is-paused');
-  };
+  // The ticker stays compositor-driven while the user scrolls. We only pause it
+  // when it is well outside the viewport, which saves work without making the
+  // animation appear to freeze while someone scrolls past it.
+  if (trustTrack && trustRail && !reducedMotion && 'IntersectionObserver' in window) {
+    const tickerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        trustTrack.classList.toggle('is-paused', !entry.isIntersecting);
+      });
+    }, { rootMargin: '160px 0px 160px 0px', threshold: 0 });
+    tickerObserver.observe(trustRail);
+  }
 
-  const resumeTrustTickerSoon = (delay = 650) => {
-    if (!trustTrack || !touchViewport.matches) return;
-    window.clearTimeout(trustResumeTimer);
-    trustResumeTimer = window.setTimeout(() => {
-      trustTrack.classList.remove('is-paused');
-    }, delay);
-  };
+  document.addEventListener('visibilitychange', () => {
+    if (!trustTrack || reducedMotion) return;
+    trustTrack.classList.toggle('is-paused', document.hidden);
+  });
 
   let headerScrolled = null;
-  let headerTicking = false;
-
   const updateHeader = () => {
     const next = window.scrollY > 30;
-    if (next !== headerScrolled) {
-      header?.classList.toggle('scrolled', next);
-      headerScrolled = next;
-    }
-    headerTicking = false;
+    if (next === headerScrolled) return;
+    header?.classList.toggle('scrolled', next);
+    headerScrolled = next;
   };
 
   updateHeader();
-  window.addEventListener('scroll', () => {
-    if (!headerTicking) {
-      headerTicking = true;
-      window.requestAnimationFrame(updateHeader);
-    }
-    pauseTrustTicker();
-    resumeTrustTickerSoon();
-  }, { passive: true });
-
-
-  // Prevent the iOS/Safari rubber-band gesture from pulling the hero down past the top of the page.
-  let topTouchStartY = 0;
-  document.addEventListener('touchstart', (event) => {
-    pauseTrustTicker();
-    if (window.scrollY <= 0 && event.touches?.length) {
-      topTouchStartY = event.touches[0].clientY;
-    }
-  }, { passive: true });
-
-  document.addEventListener('touchend', () => resumeTrustTickerSoon(700), { passive: true });
-  document.addEventListener('touchcancel', () => resumeTrustTickerSoon(700), { passive: true });
-
-  document.addEventListener('touchmove', (event) => {
-    if (window.scrollY <= 0 && event.touches?.length) {
-      const currentY = event.touches[0].clientY;
-      if (currentY > topTouchStartY) event.preventDefault();
-    }
-  }, { passive: false });
+  window.addEventListener('scroll', updateHeader, { passive: true });
 
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
@@ -82,7 +56,6 @@
     });
   }
 
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const reveals = document.querySelectorAll('.reveal');
 
   if (reducedMotion || touchViewport.matches || !('IntersectionObserver' in window)) {
