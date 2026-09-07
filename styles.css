@@ -781,3 +781,102 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   .capability-track { animation: none !important; transform: none !important; }
   .capability-set[aria-hidden="true"] { display: none; }
 }
+
+
+/* ==========================================================================
+   DOWLING CHARCOAL / CONTOUR TEST
+   Reversible experiment requested after design approval.
+   To revert instantly: remove `theme-charcoal-test` from the <body> element.
+   Every rule below is scoped to that class, so the approved design remains
+   untouched underneath.
+   ========================================================================== */
+.theme-charcoal-test {
+  --dowling-charcoal: #252A2D;
+  --dowling-contour: #555A5C;
+}
+
+/* 1. Trust ticker: charcoal surface with a restrained contour detail. */
+.theme-charcoal-test .capability-rail {
+  background-color: var(--dowling-charcoal);
+  background-image: url("assets/contour-lines.svg");
+  background-repeat: no-repeat;
+  background-size: 880px auto;
+  background-position: 72% 44%;
+  border-top-color: rgba(255,255,255,.10);
+}
+.theme-charcoal-test .capability-rail::before {
+  background: linear-gradient(90deg, var(--dowling-charcoal) 0%, rgba(37,42,45,.93) 38%, rgba(37,42,45,0) 100%);
+}
+.theme-charcoal-test .capability-rail::after {
+  background: linear-gradient(270deg, var(--dowling-charcoal) 0%, rgba(37,42,45,.93) 38%, rgba(37,42,45,0) 100%);
+}
+.theme-charcoal-test .capability-item {
+  border-right-color: rgba(85,90,92,.42);
+}
+.theme-charcoal-test .capability-item:first-child {
+  border-left-color: rgba(85,90,92,.42);
+}
+
+/* 2. Location section: same charcoal, with a single oversized topographic motif. */
+.theme-charcoal-test .coverage {
+  background-color: var(--dowling-charcoal);
+  background-image:
+    linear-gradient(90deg, rgba(37,42,45,.99) 0%, rgba(37,42,45,.95) 42%, rgba(37,42,45,.74) 100%),
+    url("assets/contour-lines.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, min(1100px, 82vw) auto;
+  background-position: center, 108% 52%;
+}
+.theme-charcoal-test .coverage-areas,
+.theme-charcoal-test .coverage-areas span,
+.theme-charcoal-test .faq details {
+  border-color: rgba(85,90,92,.48);
+}
+
+/* 3. Small dark UI surfaces repeat the secondary colour without taking over. */
+.theme-charcoal-test .button-ghost,
+.theme-charcoal-test .button-dark {
+  background: var(--dowling-charcoal);
+  border-color: var(--dowling-contour);
+}
+.theme-charcoal-test .button-ghost::before,
+.theme-charcoal-test .button-dark::before {
+  background: var(--orange);
+}
+.theme-charcoal-test .button-ghost:hover,
+.theme-charcoal-test .button-ghost:focus-visible,
+.theme-charcoal-test .button-dark:hover,
+.theme-charcoal-test .button-dark:focus-visible {
+  border-color: var(--orange);
+}
+.theme-charcoal-test .image-label {
+  background: rgba(37,42,45,.92);
+  border: 1px solid rgba(85,90,92,.58);
+}
+
+/* 4. Footer gets the charcoal only. No contour artwork here. */
+.theme-charcoal-test .site-footer {
+  background: var(--dowling-charcoal);
+  border-top-color: rgba(85,90,92,.44);
+}
+.theme-charcoal-test .site-footer small {
+  border-top-color: rgba(85,90,92,.35);
+}
+
+/* Keep the mobile fixed contact tray quieter than the patterned sections. */
+@media (max-width: 620px) {
+  .theme-charcoal-test .capability-rail {
+    background-size: 650px auto;
+    background-position: 61% 50%;
+  }
+  .theme-charcoal-test .coverage {
+    background-image:
+      linear-gradient(180deg, rgba(37,42,45,.97) 0%, rgba(37,42,45,.92) 100%),
+      url("assets/contour-lines.svg");
+    background-size: cover, 760px auto;
+    background-position: center, 68% 42%;
+  }
+  .theme-charcoal-test .mobile-action-bar {
+    background: #151719;
+  }
+}

@@ -1,0 +1,31 @@
+DOWLING PROJECTS — CHARCOAL / CONTOUR TEST
+
+This build is a reversible visual experiment.
+
+Enabled colours:
+- Charcoal: #252A2D
+- Contour lines: #555A5C
+
+TESTED AREAS
+- Trust ticker: charcoal + contour motif
+- Where We Work: charcoal + contour motif
+- Footer: charcoal only
+- Secondary dark buttons: charcoal + #555A5C border
+- Anro image label: charcoal
+
+FASTEST REVERT
+Open index.html and change:
+
+<body class="theme-charcoal-test">
+
+to:
+
+<body>
+
+That single change restores the previously approved black design. All test CSS is scoped to the theme-charcoal-test class.
+
+GIT REVERT
+If this is committed as its own commit and nothing else has been committed after it, you can also run:
+
+git revert HEAD
+git push

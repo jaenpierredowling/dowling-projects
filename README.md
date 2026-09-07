@@ -51,3 +51,17 @@ WhatsApp and phone: +27 62 411 4413
 - Verify the sending domain in Resend.
 - Add Google Analytics / Google Tag Manager once the Google account setup is ready.
 - Add the final Google Business Profile link when available.
+
+
+## Charcoal + contour visual test
+
+This build contains a reversible visual experiment using the proposed secondary palette:
+
+- Charcoal: `#252A2D`
+- Contour detail: `#555A5C`
+
+The test is enabled by the class `theme-charcoal-test` on the `<body>` element in `index.html`.
+
+**To revert to the previously approved design, simply remove `class="theme-charcoal-test"` from `<body>`.** All test styling is scoped to that class, so no other CSS needs to be undone. The extra `assets/contour-lines.svg` file can remain without affecting the site.
+
+The experiment is deliberately limited to the trust ticker, Where We Work section, footer, secondary dark buttons and the Anro image label.
