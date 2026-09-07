@@ -795,13 +795,10 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   --dowling-contour: #555A5C;
 }
 
-/* 1. Trust ticker: charcoal surface with a restrained contour detail. */
+/* 1. Trust ticker: solid charcoal only. Keep the moving information strip clean. */
 .theme-charcoal-test .capability-rail {
   background-color: var(--dowling-charcoal);
-  background-image: url("assets/contour-lines.svg");
-  background-repeat: no-repeat;
-  background-size: 880px auto;
-  background-position: 72% 44%;
+  background-image: none;
   border-top-color: rgba(255,255,255,.10);
 }
 .theme-charcoal-test .capability-rail::before {
@@ -854,9 +851,15 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
   border: 1px solid rgba(85,90,92,.58);
 }
 
-/* 4. Footer gets the charcoal only. No contour artwork here. */
+/* 4. Footer: charcoal surface with a second, very restrained contour treatment. */
 .theme-charcoal-test .site-footer {
-  background: var(--dowling-charcoal);
+  background-color: var(--dowling-charcoal);
+  background-image:
+    linear-gradient(90deg, rgba(37,42,45,.96) 0%, rgba(37,42,45,.90) 58%, rgba(37,42,45,.80) 100%),
+    url("assets/contour-lines.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-size: cover, 720px auto;
+  background-position: center, -90px 58%;
   border-top-color: rgba(85,90,92,.44);
 }
 .theme-charcoal-test .site-footer small {
@@ -865,16 +868,16 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
 
 /* Keep the mobile fixed contact tray quieter than the patterned sections. */
 @media (max-width: 620px) {
-  .theme-charcoal-test .capability-rail {
-    background-size: 650px auto;
-    background-position: 61% 50%;
-  }
   .theme-charcoal-test .coverage {
     background-image:
       linear-gradient(180deg, rgba(37,42,45,.97) 0%, rgba(37,42,45,.92) 100%),
       url("assets/contour-lines.svg");
     background-size: cover, 760px auto;
     background-position: center, 68% 42%;
+  }
+  .theme-charcoal-test .site-footer {
+    background-size: cover, 520px auto;
+    background-position: center, -130px 52%;
   }
   .theme-charcoal-test .mobile-action-bar {
     background: #151719;

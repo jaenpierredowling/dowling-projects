@@ -29,3 +29,6 @@ If this is committed as its own commit and nothing else has been committed after
 
 git revert HEAD
 git push
+
+
+Update 18: contour artwork is intentionally excluded from the moving trust ticker and used only on the larger charcoal sections (Where We Work and footer).
