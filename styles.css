@@ -821,8 +821,8 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
     linear-gradient(90deg, rgba(37,42,45,.99) 0%, rgba(37,42,45,.95) 42%, rgba(37,42,45,.74) 100%),
     url("assets/contour-lines.svg");
   background-repeat: no-repeat, no-repeat;
-  background-size: cover, min(1100px, 82vw) auto;
-  background-position: center, 108% 52%;
+  background-size: cover, min(980px, 72vw) auto;
+  background-position: center, 108% 56%;
 }
 .theme-charcoal-test .coverage-areas,
 .theme-charcoal-test .coverage-areas span,
@@ -858,8 +858,8 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
     linear-gradient(90deg, rgba(37,42,45,.96) 0%, rgba(37,42,45,.90) 58%, rgba(37,42,45,.80) 100%),
     url("assets/contour-lines.svg");
   background-repeat: no-repeat, no-repeat;
-  background-size: cover, 720px auto;
-  background-position: center, -90px 58%;
+  background-size: cover, 900px auto;
+  background-position: center, -170px 55%;
   border-top-color: rgba(85,90,92,.44);
 }
 .theme-charcoal-test .site-footer small {
@@ -872,12 +872,12 @@ details p { margin: -5px 0 24px; max-width: 620px; font-size: .9rem; line-height
     background-image:
       linear-gradient(180deg, rgba(37,42,45,.97) 0%, rgba(37,42,45,.92) 100%),
       url("assets/contour-lines.svg");
-    background-size: cover, 760px auto;
-    background-position: center, 68% 42%;
+    background-size: cover, 700px auto;
+    background-position: center, 76% 52%;
   }
   .theme-charcoal-test .site-footer {
-    background-size: cover, 520px auto;
-    background-position: center, -130px 52%;
+    background-size: cover, 560px auto;
+    background-position: center, -140px 58%;
   }
   .theme-charcoal-test .mobile-action-bar {
     background: #151719;
