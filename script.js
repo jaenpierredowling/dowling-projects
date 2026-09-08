@@ -20,6 +20,7 @@
         trustTrack.classList.toggle('is-paused', !entry.isIntersecting);
       });
     }, { rootMargin: '160px 0px 160px 0px', threshold: 0 });
+
     tickerObserver.observe(trustRail);
   }
 
@@ -29,9 +30,12 @@
   });
 
   let headerScrolled = null;
+
   const updateHeader = () => {
     const next = window.scrollY > 30;
+
     if (next === headerScrolled) return;
+
     header?.classList.toggle('scrolled', next);
     headerScrolled = next;
   };
@@ -42,6 +46,7 @@
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
       const open = menuButton.getAttribute('aria-expanded') === 'true';
+
       menuButton.setAttribute('aria-expanded', String(!open));
       mobileMenu.classList.toggle('open', !open);
       document.body.classList.toggle('menu-open', !open);
@@ -71,20 +76,28 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px',
+    });
 
     reveals.forEach((item, index) => {
-      item.style.transitionDelay = touchViewport.matches ? '0ms' : `${Math.min(index % 5, 4) * 45}ms`;
+      item.style.transitionDelay = touchViewport.matches
+        ? '0ms'
+        : `${Math.min(index % 5, 4) * 45}ms`;
+
       observer.observe(item);
     });
   }
 
-
   document.querySelectorAll('details').forEach((item) => {
     item.addEventListener('toggle', () => {
       if (!item.open) return;
+
       document.querySelectorAll('details').forEach((other) => {
-        if (other !== item) other.removeAttribute('open');
+        if (other !== item) {
+          other.removeAttribute('open');
+        }
       });
     });
   });
@@ -92,15 +105,21 @@
   if (form) {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+
       status.textContent = '';
       status.className = 'form-status';
 
       const fields = [...form.querySelectorAll('[required]')];
       let valid = true;
+
       fields.forEach((field) => {
         const fieldValid = field.checkValidity();
+
         field.setAttribute('aria-invalid', String(!fieldValid));
-        if (!fieldValid) valid = false;
+
+        if (!fieldValid) {
+          valid = false;
+        }
       });
 
       if (!valid) {
@@ -111,21 +130,37 @@
       }
 
       const payload = Object.fromEntries(new FormData(form).entries());
+
       submitButton.disabled = true;
       submitButton.classList.add('loading');
 
       try {
         const response = await fetch('/api/quote', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify(payload),
         });
 
         const result = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(result.error || 'Unable to send your request.');
+
+        if (!response.ok) {
+          throw new Error(result.error || 'Unable to send your request.');
+        }
+
+        window.dataLayer = window.dataLayer || [];
+
+        window.dataLayer.push({
+          event: 'quote_success',
+        });
 
         form.reset();
-        fields.forEach((field) => field.removeAttribute('aria-invalid'));
+
+        fields.forEach((field) => {
+          field.removeAttribute('aria-invalid');
+        });
+
         status.textContent = 'Thanks. Your request has been sent to Anro. He will be in touch as soon as he can.';
         status.classList.add('success');
       } catch (error) {
